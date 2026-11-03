@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Islam01</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0b5d57"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Islam01">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu&family=Gulzar&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#edf1f4;--card:#fff;--tx:#14212b;--mut:#5b6b78;--pri:#0b5d57;--acc:#b7822a;--bd:#d8e0e6;--on:#fff;--hero1:#0b5d57;--hero2:#0a2f4a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b141d;--card:#121e2a;--tx:#e6edf2;--mut:#8ea1b0;--pri:#4fc3b0;--acc:#e2b25a;--bd:#223341;--on:#07120f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b141d;--card:#121e2a;--tx:#e6edf2;--mut:#8ea1b0;--pri:#4fc3b0;--acc:#e2b25a;--bd:#223341;--on:#07120f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:12px 16px 96px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 0 12px}
+h1{font:700 26px/1 Amiri,serif;margin:0;color:var(--pri)}
+#usr{max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+button{font:inherit;font-size:14px;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;padding:8px 12px}
+button.on{background:var(--pri);color:var(--on);border-color:var(--pri)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.seg{display:flex;gap:24px;margin:2px 2px 16px;border-bottom:1px solid var(--bd)}
+.seg button{background:none;border:0;border-bottom:3px solid transparent;border-radius:0;padding:8px 2px;font-size:17px;font-weight:600;color:var(--mut)}
+.seg button.on{background:none;color:var(--tx);border-bottom-color:var(--acc)}
+#bn{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;background:var(--card);border-top:1px solid var(--bd);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+#bn button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;color:var(--mut);padding:6px 0}
+#bn button span{font-size:21px;line-height:1}
+#bn button.on{background:none;color:var(--pri);font-weight:700}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px}
+.card>.mut:first-child{font-weight:600;margin-bottom:6px}
+.hero{position:relative;text-align:center;color:#fff;border:0;border-radius:50% 50% 18px 18px/110px 110px 18px 18px;padding:56px 16px 24px;background:linear-gradient(160deg,var(--hero1),var(--hero2));overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 6l6 12 12-6-6 12 12 6-12 6 6 12-12-6-6 12-6-12-12 6 6-12-12-6 12-6-6-12 12 6z' fill='none' stroke='%23fff' stroke-opacity='.1'/%3E%3C/svg%3E")}
+.hero>*{position:relative}
+.hero .big{font:700 36px/1.2 Amiri,serif;margin:6px 0;color:#f3d58a}
+.hero small{opacity:.9;font-size:14px}
+@font-face{font-family:"IndoPak";src:local("PDMS Saleem QuranFont"),local("Al Qalam Quran Majeed"),local("Noorehuda"),url("indopak.ttf") format("truetype"),url("indopak.woff2") format("woff2")}
+.en{color:var(--acc);font-size:.8em;white-space:nowrap}
+.ar{font-family:var(--fa,"Scheherazade New",serif);direction:rtl;text-align:right;line-height:2.5;font-size:var(--fs,26px)}
+.ur{font-family:var(--fu,"Noto Nastaliq Urdu",serif);direction:rtl;text-align:right;line-height:2.2;color:var(--mut);font-size:calc(var(--fs,26px) * .68)}
+.ay{padding:10px 0;border-bottom:1px solid var(--bd)}
+.ay:last-child{border:0}
+.num{display:inline-block;min-width:26px;text-align:center;font:12px system-ui;color:var(--acc);border:1px solid var(--acc);border-radius:50%;padding:1px 0;margin-inline-start:6px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+select,input{font:inherit;font-size:15px;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:9px 10px;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.grid .h{font-size:12px;color:var(--mut)}
+.d{padding:7px 0;border-radius:12px;border:1px solid transparent;background:none;position:relative}
+.d b{display:block;font-size:15px}
+.d i{display:block;font-style:normal;font-size:11px;color:var(--mut)}
+.d.t{border-color:var(--acc)}
+.d.s{background:var(--pri);color:var(--on)}
+.d.s i{color:var(--on)}
+.d.e::after{content:"";position:absolute;top:5px;right:7px;width:6px;height:6px;border-radius:50%;background:var(--acc)}
+.pr{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border-radius:12px;font-size:17px}
+.pr+.pr{border-top:1px solid var(--bd)}
+.pr.nx{background:color-mix(in srgb,var(--pri) 14%,transparent);border-top-color:transparent;font-weight:700}
+.evi{padding:12px 0;border-bottom:1px solid var(--bd)}
+.evi:last-child{border:0}
+.src{font-size:13px;color:var(--acc);margin-top:4px}
+.mut{color:var(--mut);font-size:14px}
+.hide{display:none!important}
+.full{display:block;width:100%;margin-top:8px}
+#gate{max-width:420px;margin:0 auto;padding:40px 16px}
+#ge{color:#c0392b;min-height:1.4em}
+
+#sp{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 38%,#0f6b62,#07243a 70%);color:#f3d58a;transition:opacity .7s}
+#sp.out{opacity:0;pointer-events:none}
+#sp .lw{position:relative;width:132px;height:132px;display:grid;place-items:center;animation:pop 1s cubic-bezier(.2,.9,.3,1.2) both}
+#sp .lw::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px dashed #f3d58a99;animation:spin 9s linear infinite}
+#sp img{width:108px;height:108px;border-radius:50%;object-fit:cover}
+.lg{font-size:64px}
+#sp h2{font:700 38px Amiri,serif;margin:0;animation:up .9s .5s both}
+#sp p{margin:0;font:22px Amiri,serif;opacity:.9;animation:up .9s .8s both}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes up{from{transform:translateY(16px);opacity:0}}
+@media (prefers-reduced-motion:reduce){#sp *{animation:none!important}}
+.hl{width:30px;height:30px;border-radius:50%;vertical-align:middle;object-fit:cover}
+.tls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.tl{border:1px solid var(--bd);border-radius:14px;padding:10px 6px;text-align:center}
+.tl small{display:block;color:var(--mut);font-size:12px}.tl b{font-size:16px}
+.tl.nx{background:var(--pri);border-color:var(--pri);color:var(--on)}.tl.nx small{color:var(--on)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 2px;font-size:12px;border-radius:16px;line-height:1.2}
+.tile span{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;font-size:22px;background:color-mix(in srgb,var(--pri) 13%,transparent)}
+.yt{display:flex;justify-content:space-between;align-items:center;gap:10px;background:linear-gradient(120deg,#b3261e,#7a130e);color:#fff;border:0}
+.yt .mut{color:#ffffffcc}
+.btn{background:#fff;color:#7a130e;border-radius:12px;padding:9px 14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.chips{display:flex;gap:8px;overflow-x:auto;margin-bottom:12px;padding-bottom:4px}
+.chips button{white-space:nowrap;border-radius:999px}
+.gb{margin-top:6px;line-height:1.75}
+.hj{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;direction:rtl}
+.hj div{border:1px solid var(--bd);border-radius:12px;text-align:center;padding:6px 0}
+.hj b{display:block;font:30px Amiri,serif}.hj small{font-size:11px;color:var(--mut);direction:ltr;display:block}
+.bg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bc{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:140px;border:1px solid var(--bd);border-radius:16px;background:var(--card);padding:14px 8px;text-align:center;font-weight:700;color:var(--tx)}
+.bc::before,.bc::after{content:"❦";position:absolute;font-size:15px;color:var(--bd)}.bc::before{top:6px;left:9px}.bc::after{bottom:6px;right:9px;transform:rotate(180deg)}
+.bc .ic{font-size:40px;line-height:1.2}.bc .ar{font-size:30px;line-height:1.7;text-align:center}.bc small{color:var(--mut);font-weight:600}
+.sr{display:flex;align-items:center;gap:12px;padding:14px;margin-bottom:10px;cursor:pointer}
+.sr .n{width:34px;height:34px;flex:none;display:grid;place-items:center;border:1px solid var(--acc);border-radius:50%;color:var(--acc);font-size:13px}
+.sr .m{flex:1}.sr .ar{font-size:30px;line-height:1.5}.hv{font-size:22px;background:none;border:0;padding:4px}
+.seg2{display:flex;gap:8px;margin-bottom:12px}.bk{margin-bottom:12px}
+.sp{border:0;background:var(--pri);color:var(--on);border-radius:10px;padding:4px 10px;font-size:13px;margin-bottom:6px}
+.ay.pl{background:color-mix(in srgb,var(--acc) 16%,transparent);border-radius:10px}
+#gc .gb{direction:rtl;text-align:right;font-family:var(--fu,"Noto Nastaliq Urdu",serif);line-height:2.4}
+#gc b{display:block;direction:rtl;text-align:right;font-family:var(--fu,"Noto Nastaliq Urdu",serif)}
+body[data-rtl="0"] .ur{direction:ltr;text-align:left;font-family:"Plus Jakarta Sans",system-ui,sans-serif;line-height:1.7;font-size:calc(var(--fs,26px)*.6)}
+
+html{scroll-behavior:smooth}
+body{background:radial-gradient(900px 420px at 50% -140px,color-mix(in srgb,var(--pri) 20%,transparent),transparent),var(--bg);background-attachment:fixed}
+.wrap{padding-bottom:116px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;margin:0 -16px 10px;padding:10px 16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 80%,transparent)}
+section:not(.hide){animation:sIn .38s cubic-bezier(.2,.8,.2,1)}
+@keyframes sIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.bg2>*,#ql>*,#hl>*,.cats>*{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+.bg2>:nth-child(2),.cats>:nth-child(2){animation-delay:.05s}.bg2>:nth-child(3),.cats>:nth-child(3){animation-delay:.1s}.bg2>:nth-child(4),.cats>:nth-child(4){animation-delay:.15s}.bg2>:nth-child(5),.cats>:nth-child(5){animation-delay:.2s}.bg2>:nth-child(6),.cats>:nth-child(6){animation-delay:.25s}.bg2>:nth-child(n+7),.cats>:nth-child(n+7){animation-delay:.3s}
+.card{border-radius:20px;box-shadow:0 8px 28px -16px rgba(10,47,74,.35);transition:transform .25s,box-shadow .25s}
+button{transition:background .2s,transform .15s,box-shadow .2s,color .2s}
+button:active,.card.sr:active{transform:scale(.97)}
+.bc{border-radius:20px;background:linear-gradient(160deg,var(--card),color-mix(in srgb,var(--pri) 8%,var(--card)));box-shadow:0 10px 26px -18px rgba(10,47,74,.5)}
+.bc:active{transform:scale(.97)}
+.cats span{background:linear-gradient(145deg,color-mix(in srgb,var(--pri) 16%,var(--card)),var(--card));border-radius:20px;box-shadow:0 8px 20px -14px rgba(10,47,74,.5);transition:transform .2s}
+.cats button:active span{transform:scale(.92)}
+#bn{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border-radius:26px;border:1px solid color-mix(in srgb,var(--bd) 70%,transparent);background:color-mix(in srgb,var(--card) 84%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 14px 34px -12px rgba(0,0,0,.4)}
+#bn button{border-radius:20px;transition:background .25s,color .25s}
+#bn button.on{background:color-mix(in srgb,var(--pri) 15%,transparent)}
+#bn button span{transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
+#bn button.on span{transform:translateY(-2px) scale(1.18)}
+.card.pc{position:relative;overflow:hidden;color:#fff;border:0;background:linear-gradient(155deg,#0b6a62,#0a2f4a);box-shadow:0 18px 40px -20px rgba(10,47,74,.8)}
+.pc::before{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 6l6 12 12-6-6 12 12 6-12 6 6 12-12-6-6 12-6-12-12 6 6-12-12-6 12-6-6-12 12 6z' fill='none' stroke='%23fff' stroke-opacity='.08'/%3E%3C/svg%3E")}
+.pc>*{position:relative}
+.pc .big2{color:#f3d58a}.pc .rem{color:#f3d58a}.pc .mut{color:rgba(255,255,255,.78)}
+.pc .tl::before{background:rgba(255,255,255,.25)}.pc .tl div{color:rgba(255,255,255,.7)}.pc .tl i{background:transparent;border-color:rgba(255,255,255,.4)}
+.pc .tl .nx{color:#fff}.pc .tl .nx i{background:#f3d58a;border-color:#f3d58a}
+.pc .pt{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16);backdrop-filter:blur(6px);transition:transform .2s,background .2s}
+.pc .pt small{color:rgba(255,255,255,.72)}.pc .pt b{color:#fff}
+.pc .pt.nx{background:#f3d58a;border-color:#f3d58a}.pc .pt.nx small,.pc .pt.nx b{color:#0a2f4a}
+.pc select,.pc button{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.22)}.pc select option{color:#000}
+.cmp{width:min(86vw,320px);margin:6px auto 12px;border-radius:50%;transition:box-shadow .4s}
+.cmp svg{width:100%;display:block}.cmp text{fill:var(--tx);font:700 16px system-ui}.cmp text.n{fill:#d92d20}
+#ring circle{stroke:var(--mut)}
+.cmp.ok{box-shadow:0 0 0 6px color-mix(in srgb,var(--pri) 35%,transparent),0 0 44px color-mix(in srgb,var(--pri) 60%,transparent)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex:none}
+symbol .a{stroke:var(--acc)}
+button svg.i{width:1.15em;height:1.15em;margin-inline-end:4px}
+#bn svg.i,.cats svg.i,.tile svg.i,.bc svg.i,.hv svg.i,.seg2 svg.i{margin:0}
+.bc .ic{color:var(--pri);display:block;line-height:1}.cats span,.tile span{color:var(--pri)}
+.hv svg.i{width:23px;height:23px;color:#e5484d}.hv svg.on{fill:#e5484d}
+.brand{width:26px;height:26px;color:var(--acc);margin-inline-end:6px;vertical-align:-5px}
+.lgs{width:62px;height:62px;color:#f3d58a;stroke-width:1.4}
+.pc .pt svg,.cmp svg.i{stroke:currentColor}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.500 12 3l9 7.500"/><path d="M5 9.500V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.500"/></symbol><symbol id="i-quran" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/><path class="a" d="M5.500 8.500h2M16.500 8.500h2"/></symbol><symbol id="i-hadith" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path class="a" d="M9 13h6M9 17h4"/></symbol><symbol id="i-kaaba" viewBox="0 0 24 24"><path d="M12 3 3.500 6.500v10L12 21l8.500-4.500v-10z"/><path d="M3.500 6.500 12 10l8.500-3.500M12 10v11"/><path class="a" d="M3.500 9.800 12 13.300l8.500-3.500"/></symbol><symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.600"/><circle cx="12" cy="12" r="1.600"/><circle cx="19" cy="12" r="1.600"/></symbol><symbol id="i-mosque" viewBox="0 0 24 24"><path d="M5 21v-8a7 7 0 0 1 14 0v8"/><path d="M2.500 21h19"/><path class="a" d="M12 2.500V6"/><path d="M9.500 21v-4a2.500 2.500 0 0 1 5 0v4"/></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.500s6.500 6.600 6.500 11a6.500 6.500 0 0 1-13 0c0-4.400 6.500-11 6.500-11z"/><path class="a" d="M9 14a3 3 0 0 0 3 3"/></symbol><symbol id="i-coffin" viewBox="0 0 24 24"><path d="M9.500 2.500h5L19 9l-2.500 12.500h-9L5 9z"/><path class="a" d="M10 10h4"/></symbol><symbol id="i-finger" viewBox="0 0 24 24"><path d="M10 11V4.500a1.500 1.500 0 0 1 3 0V11"/><path d="M13 11.500a1.500 1.500 0 0 1 3 0v1"/><path d="M16 12.500a1.500 1.500 0 0 1 3 0V16a6 6 0 0 1-6 6h-1.500a6 6 0 0 1-4.600-2.100L4.500 16.200a1.500 1.500 0 0 1 2.300-1.900L10 17.500"/></symbol><symbol id="i-hands" viewBox="0 0 24 24"><path d="M12 21c-5 0-9-3.500-9-8.500l4.500 2"/><path d="M12 21c5 0 9-3.500 9-8.500l-4.500 2"/><path class="a" d="M8 12.500V6.500a1.500 1.500 0 0 1 3 0V11M13 11V6.500a1.500 1.500 0 0 1 3 0v6"/></symbol><symbol id="i-alif" viewBox="0 0 24 24"><text x="12" y="18.500" text-anchor="middle" font-size="19" font-family="Amiri,serif" fill="currentColor" stroke="none">ب</text><circle class="a" cx="12" cy="21.500" r=".9"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.500A8.500 8.500 0 1 1 9.500 4 7 7 0 0 0 20 14.500z"/><path class="a" d="m17 3.500.8 1.700 1.700.8-1.700.8L17 8.500l-.8-1.700-1.700-.8 1.700-.8z"/></symbol><symbol id="i-tent" viewBox="0 0 24 24"><path d="M12 4 2.500 20h19z"/><path class="a" d="M12 4v16M9 20l3-6 3 6"/></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path class="a" d="m15.700 8.300-2.100 5.300-5.300 2.100 2.100-5.300z"/></symbol><symbol id="i-beads" viewBox="0 0 24 24"><circle cx="7" cy="7" r="2"/><circle cx="14" cy="5" r="2"/><circle cx="19" cy="10" r="2"/><circle cx="18" cy="17" r="2"/><circle cx="12" cy="20" r="2"/><path class="a" d="M5.500 14.500v6M3.500 20.500h4"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4.500" width="18" height="16.500" rx="2.500"/><path d="M3 9.500h18M8 2.500v4M16 2.500v4"/><path class="a" d="M8 14h.01M12 14h.01M16 14h.01M8 17.500h.01M12 17.500h.01"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.500 2.600 4.200 4.700-1.400-1.400 4.700 4.200 2.600-4.200 2.600 1.400 4.700-4.700-1.400L12 21.500l-2.600-4.200-4.700 1.400 1.400-4.700L2.500 12l4.200-2.600-1.400-4.700 4.700 1.400z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.500S3.500 15.400 3.500 9.600A4.600 4.600 0 0 1 12 7.300a4.600 4.600 0 0 1 8.500 2.300c0 5.800-8.500 10.900-8.500 10.900z"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.500s7-6 7-11.700a7 7 0 0 0-14 0c0 5.700 7 11.700 7 11.700z"/><circle class="a" cx="12" cy="9.800" r="2.500"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol><symbol id="i-stop" viewBox="0 0 24 24"><rect x="6.500" y="6.500" width="11" height="11" rx="2" fill="currentColor"/></symbol><symbol id="i-spk" viewBox="0 0 24 24"><path d="M4 9.500v5h3.500l5 4v-13l-5 4z"/><path class="a" d="M16 9a4 4 0 0 1 0 6M18.500 6.500a8 8 0 0 1 0 11"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path class="a" d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol><symbol id="i-theme" viewBox="0 0 24 24"><path d="M20.500 14A8.500 8.500 0 1 1 10 3.500 7 7 0 0 0 20.500 14z"/></symbol><symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol></defs></svg>
+<div id="sp"><div class="lw"><svg class="i lgs"><use href="#i-mosque"/></svg><img src="logo.png" alt="" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'" onerror="this.remove()"></div><h2>Islam01</h2><p>بِسْمِ اللّٰهِ الرَّحْمَٰنِ الرَّحِيمِ</p></div>
+<div class="wrap">
+<header><h1><svg class="i brand"><use href="#i-mosque"/></svg><img class="hl" src="logo.png" alt="" style="display:none" onload="this.style.display='inline-block';this.previousElementSibling.remove()" onerror="this.remove()"> Islam01</h1><span class="row"><button id="fb" aria-label="Font">Aa <svg class="i"><use href="#i-globe"/></svg></button><button id="th" aria-label="Theme"><svg class="i"><use href="#i-theme"/></svg></button></span></header>
+<nav id="nav" class="seg"></nav>
+<div class="card row hide" id="fnt"><select id="fa"></select><select id="fu"></select><select id="lg"></select><select id="am"></select></div>
+
+<section id="home">
+<div class="card hero"><small id="gday"></small><div class="big" id="hdate"></div><small id="hmon"></small></div>
+<div class="card"><div class="row" style="justify-content:space-between"><div><div class="mut">Agli namaz</div><b id="hn" style="font-size:22px">—</b></div><div id="hc" class="mut" style="text-align:end"></div></div><div class="tls" id="hp"></div></div>
+<div class="tiles" id="tiles"></div>
+<div class="card yt hide" id="yt"><div><b>Hamara YouTube channel</b><div class="mut">Deen ki baatein aur videos</div></div><a class="btn" id="ytl" target="_blank" rel="noopener">▶ Dekhein</a></div>
+<div class="card"><div class="mut">Aaj ki Hadith</div><div id="dh"></div></div>
+<div class="card"><div class="mut">Aaj ka event</div><div id="ev"></div></div>
+<div class="card"><div class="mut">Aaj ka Islamic quote</div><div id="dq"></div></div>
+</section>
+<section id="qlist" class="hide"><div class="card hide" id="lr" style="display:flex;justify-content:space-between;align-items:center;gap:8px"></div>
+<div class="seg2"><button class="on" data-qt="all">Surah</button><button data-qt="fav">Pasandeeda <svg class="i"><use href="#i-heart"/></svg></button></div><div id="ql"></div></section>
+<section id="hbooks" class="hide"><div class="bg2" id="hbl"></div></section>
+<section id="ib" class="hide"><div class="bg2" id="ibl"></div></section>
+<section id="more" class="hide"><button class="full on hide" id="inst" style="margin:0 0 12px">Is website ko App ki tarah install karein</button><div class="bg2" id="mol"></div></section>
+<section id="qibla" class="hide"><button class="bk" data-go="more"><svg class="i"><use href="#i-back"/></svg> Wapas</button>
+<div class="card" style="text-align:center"><div class="cmp" id="cmp"><svg viewBox="-112 -112 224 224">
+<g id="ring"><circle r="100" fill="none" stroke-width="2"/><g id="ticks"></g>
+<text class="n" y="-70" text-anchor="middle">N</text><text y="78" text-anchor="middle">S</text><text x="76" y="6" text-anchor="middle">E</text><text x="-76" y="6" text-anchor="middle">W</text>
+<g id="qm"><circle cy="-104" r="12" fill="var(--card)" stroke="none"/><use href="#i-kaaba" x="-10" y="-114" width="20" height="20" stroke="var(--acc)" fill="none" stroke-width="1.8"/></g></g>
+<g id="needle"><line x1="0" y1="0" x2="0" y2="-62" stroke="var(--acc)" stroke-width="4" stroke-linecap="round"/><polygon points="0,-78 -9,-58 9,-58" fill="var(--acc)"/></g>
+<circle r="6" fill="var(--pri)"/><polygon points="0,-112 -7,-100 7,-100" fill="var(--pri)"/></svg></div>
+<b id="qd" style="display:block;margin:6px 0">Qibla ki simt dekhne ke liye neeche button dabayein</b>
+<div class="mut" id="qh"></div>
+<button class="full on" id="qg" style="margin-top:12px"><svg class="i"><use href="#i-pin"/></svg> Qibla ka pata lagayein</button>
+<div class="mut" style="margin-top:10px;font-size:12px">Phone ko seedha (zameen ke barabar) pakdein aur dheere se ghumayein. Jab Kaaba ka nishan oopar wale nishan par aa jaye aur kinara chamke to aap Qibla ki taraf hain. Compass theek karne ke liye phone ko 8 ki shakal mein ghumayein.</div></div></section>
+<section id="tasbeeh" class="hide"><button class="bk" data-go="more"><svg class="i"><use href="#i-back"/></svg> Wapas</button><div class="card" style="text-align:center"><div class="mut">Tasbeeh</div><div id="tn" style="font:700 72px Amiri,serif;color:var(--pri)">0</div><button class="on full" id="tb" style="font-size:22px;padding:26px">Ginein</button><button class="full" id="tr">Reset</button></div></section>
+<section id="guide" class="hide"><button class="bk" data-go="back"><svg class="i"><use href="#i-back"/></svg> Wapas</button><div class="chips" id="gt"></div><div id="gc"></div></section>
+
+<section id="namaz" class="hide">
+<div class="card row"><select id="city"></select><button id="gps"><svg class="i"><use href="#i-pin"/></svg> Meri location</button></div>
+<div class="card hero"><small>Agli namaz</small><div class="big" id="nxn">—</div><small id="nxc"></small></div>
+<div class="card" id="pt"></div>
+<p class="mut">Auqaat Karachi University of Islamic Sciences ke tareeqe aur Hanafi Asr par mabni hain (aladhan.com). Masjid ke jamaat ke auqaat se thora farq ho sakta hai.</p>
+</section>
+<section id="events" class="hide"><div class="card" id="el"></div>
+<p class="mut">Tareekhein Hijri calendar ke hisaab se hain; chaand dekhne par ek din ka farq ho sakta hai (Calendar tab mein adjust karein).</p></section>
+<section id="cal" class="hide">
+<div class="card">
+<div class="row" style="justify-content:space-between"><button id="pm">‹</button><b id="ct"></b><button id="nm">›</button></div>
+<div class="grid" id="cg" style="margin-top:10px"></div>
+</div>
+<div class="card"><b id="sel"></b><div id="sev" class="mut"></div></div>
+<div class="card"><div class="mut">Chaand ke mutabiq Hijri tareekh adjust karein</div>
+<div class="row" style="margin-top:6px"><button data-a="-1">−1 din</button><button data-a="0">Asli</button><button data-a="1">+1 din</button></div></div>
+</section>
+
+<section id="quran" class="hide"><button class="bk" data-go="qlist"><svg class="i"><use href="#i-back"/></svg> Surahs ki fehrist</button>
+<div class="card row"><button class="on" id="qp"><svg class="i"><use href="#i-play"/></svg> Poori surah sunein</button><button id="qs"><svg class="i"><use href="#i-stop"/></svg> Ruken</button></div>
+<div class="card row"><select id="ss"></select><button id="fm">A−</button><button id="fp">A+</button></div>
+<div class="card" id="qv"></div>
+<p class="mut">Poora Quran (114 surahs) Urdu tarjuma (Fateh Muhammad Jalandhri) ke saath. Pehli dafa internet se load hota hai, phir device mein save ho jata hai.</p>
+</section>
+
+<section id="hadith" class="hide"><button class="bk" data-go="hbooks"><svg class="i"><use href="#i-back"/></svg> Hadith ki kitabein</button>
+<div class="card row"><select id="hb"></select><select id="hs"></select></div>
+<div class="card row"><input id="hn" type="number" min="1" placeholder="Hadith number" style="width:150px"><button id="hg">Jayein</button></div>
+<div class="card"><input id="hq" placeholder="Is kitab mein talash karein…" style="width:100%"></div>
+<div id="hl"></div><div class="row" style="justify-content:center"><button id="hm" class="hide">Aur dikhayein</button></div>
+<p class="mut">Har kitab ki sari hadees internet se load hoti hain (hadith-api): kitab-war ya Poori kitab, ya number se. Arabic aur Urdu tarjuma. Poori kitab mein search sirf load ki hui hadees mein hota hai.</p>
+</section>
+</div>
+<nav id="bn"></nav>
+
+<script>
+const ic=(n,f)=>`<svg class="i${f?" on":""}"><use href="#i-${n}"/></svg>`;
+const $=s=>document.querySelector(s);
+const MN=["Muharram","Safar","Rabi ul Awwal","Rabi ul Akhir","Jumada ul Awwal","Jumada ul Akhir","Rajab","Shaban","Ramadan","Shawwal","Zil Qadah","Zil Hijjah"];
+const EL=[[1,1,"Islamic New Year (1 Muharram)"],[1,10,"Youm-e-Ashura"],[2,20,"Arbaeen (20 Safar)"],[3,12,"Eid Milad un Nabi ﷺ"],[7,27,"Shab-e-Meraj"],[8,15,"Shab-e-Barat"],[9,1,"Ramadan ka pehla roza"],[9,17,"Youm-e-Badr"],[9,27,"Shab-e-Qadr (mashhoor raat)"],[10,1,"Eid ul Fitr"],[12,9,"Youm-e-Arafah"],[12,10,"Eid ul Adha"]];
+const EV={};EL.forEach(e=>EV[e[0]+"-"+e[1]]=e[2]);
+const QT=[["بے شک مشکل کے ساتھ آسانی ہے۔","Surah Al-Inshirah 94:6"],["اللہ کسی جان پر اس کی طاقت سے زیادہ بوجھ نہیں ڈالتا۔","Surah Al-Baqarah 2:286"],["پس تم مجھے یاد کرو، میں تمہیں یاد رکھوں گا۔","Surah Al-Baqarah 2:152"],["جو اللہ پر بھروسا کرے تو وہ اسے کافی ہے۔","Surah At-Talaq 65:3"],["بے شک اللہ صبر کرنے والوں کے ساتھ ہے۔","Surah Al-Baqarah 2:153"],["خبردار! اللہ کے ذکر سے ہی دلوں کو اطمینان ملتا ہے۔","Surah Ar-Rad 13:28"],["اللہ کی رحمت سے مایوس نہ ہو جاؤ۔","Surah Az-Zumar 39:53"],["اگر تم شکر کرو گے تو میں تمہیں ضرور اور زیادہ دوں گا۔","Surah Ibrahim 14:7"],["مجھ سے دعا مانگو، میں تمہاری دعا قبول کروں گا۔","Surah Ghafir 40:60"],["اللہ کو سب سے پسندیدہ عمل وہ ہے جو ہمیشہ کیا جائے چاہے تھوڑا ہو۔","Sahih Bukhari 6464"],["طاقتور وہ نہیں جو کشتی میں پچھاڑ دے، بلکہ طاقتور وہ ہے جو غصے میں خود پر قابو رکھے۔","Sahih Bukhari 6114, Sahih Muslim 2609"],["جو رحم نہیں کرتا اس پر رحم نہیں کیا جاتا۔","Sahih Bukhari 6013, Sahih Muslim 2318"],["پاکیزگی نصف ایمان ہے۔","Sahih Muslim 223"],["تم میں بہترین وہ ہے جس کے اخلاق سب سے اچھے ہوں۔","Sahih Bukhari 3559, Sahih Muslim 2321"],["حیا ایمان کا حصہ ہے۔","Sahih Bukhari 24, Sahih Muslim 36"]];
+const WD=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const S=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const G=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+let adj=parseInt(G("adj"))||0, fs=parseInt(G("fs"))||30;
+
+/* Hijri date (browser Umm al-Qura calendar) */
+const F=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{day:"numeric",month:"numeric",year:"numeric"});
+function hj(d){const x=new Date(d.getTime()+adj*864e5),p={};F.formatToParts(x).forEach(o=>p[o.type]=o.value);return{d:+p.day,m:+p.month,y:parseInt(p.year||p.relatedYear)}}
+
+/* Data */
+const SUR=[
+{n:"Al-Fatiha",b:0,ar:["بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ","الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ","الرَّحْمَٰنِ الرَّحِيمِ","مَالِكِ يَوْمِ الدِّينِ","إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ","اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ","صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ"],
+ur:["شروع اللہ کے نام سے جو بڑا مہربان نہایت رحم والا ہے۔","سب تعریف اللہ ہی کے لیے ہے جو تمام جہانوں کا پروردگار ہے۔","بڑا مہربان نہایت رحم والا۔","روزِ جزا کا مالک۔","ہم تیری ہی عبادت کرتے ہیں اور تجھ ہی سے مدد مانگتے ہیں۔","ہمیں سیدھے راستے پر چلا۔","ان لوگوں کے راستے پر جن پر تو نے انعام کیا، ان کے نہیں جن پر غضب ہوا اور نہ گمراہوں کے۔"]},
+{n:"Al-Kausar",b:1,ar:["إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ","فَصَلِّ لِرَبِّكَ وَانْحَرْ","إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ"],
+ur:["بے شک ہم نے آپ کو کوثر عطا کی۔","پس اپنے رب کے لیے نماز پڑھیں اور قربانی کریں۔","بے شک آپ کا دشمن ہی بے نام و نشان ہے۔"]},
+{n:"Al-Ikhlas",b:1,ar:["قُلْ هُوَ اللَّهُ أَحَدٌ","اللَّهُ الصَّمَدُ","لَمْ يَلِدْ وَلَمْ يُولَدْ","وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ"],
+ur:["کہہ دو کہ وہ اللہ ایک ہے۔","اللہ بے نیاز ہے۔","نہ اس کی کوئی اولاد ہے اور نہ وہ کسی کی اولاد ہے۔","اور کوئی اس کا ہمسر نہیں۔"]},
+{n:"Al-Falaq",b:1,ar:["قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ","مِن شَرِّ مَا خَلَقَ","وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ","وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ","وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ"],
+ur:["کہہ دو کہ میں صبح کے رب کی پناہ مانگتا ہوں۔","ہر اس چیز کے شر سے جو اس نے پیدا کی۔","اور اندھیری رات کے شر سے جب وہ چھا جائے۔","اور گرہوں میں پھونکنے والیوں کے شر سے۔","اور حسد کرنے والے کے شر سے جب وہ حسد کرے۔"]},
+{n:"An-Nas",b:1,ar:["قُلْ أَعُوذُ بِرَبِّ النَّاسِ","مَلِكِ النَّاسِ","إِلَٰهِ النَّاسِ","مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ","الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ","مِنَ الْجِنَّةِ وَالنَّاسِ"],
+ur:["کہہ دو کہ میں لوگوں کے رب کی پناہ مانگتا ہوں۔","لوگوں کے بادشاہ کی۔","لوگوں کے معبود کی۔","وسوسہ ڈالنے والے پیچھے ہٹ جانے والے کے شر سے۔","جو لوگوں کے دلوں میں وسوسہ ڈالتا ہے۔","جنوں اور انسانوں میں سے۔"]}
+];
+const BIS="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+const HAD=[
+{ar:"إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",ur:"اعمال کا دارومدار نیتوں پر ہے اور ہر شخص کو وہی ملے گا جس کی اس نے نیت کی۔",s:"Sahih Bukhari 1, Sahih Muslim 1907"},
+{ar:"لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",ur:"تم میں سے کوئی شخص مومن نہیں ہو سکتا جب تک اپنے بھائی کے لیے وہی پسند نہ کرے جو اپنے لیے پسند کرتا ہے۔",s:"Sahih Bukhari 13, Sahih Muslim 45"},
+{ar:"مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",ur:"جو اللہ اور یومِ آخرت پر ایمان رکھتا ہے وہ اچھی بات کہے یا خاموش رہے۔",s:"Sahih Bukhari 6018, Sahih Muslim 47"},
+{ar:"الدِّينُ النَّصِيحَةُ",ur:"دین خیر خواہی کا نام ہے۔",s:"Sahih Muslim 55"},
+{ar:"خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",ur:"تم میں بہترین وہ ہے جو قرآن سیکھے اور سکھائے۔",s:"Sahih Bukhari 5027"},
+{ar:"تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ",ur:"اپنے بھائی کے سامنے تمہارا مسکرانا تمہارے لیے صدقہ ہے۔",s:"Jami at-Tirmidhi 1956"}
+];
+
+/* Tabs */
+const GR=[["quran","Quran",["qlist","quran"]],["hadith","Hadith",["hbooks","hadith"]],["home","Home",["home","namaz"]],["kaaba","Ibadaat",["ib","guide"]],["more","More",["more","cal","events","qibla","tasbeeh"]]];
+const TABS=GR.flatMap(g=>g[2]);
+$("#bn").innerHTML=GR.map((g,i)=>`<button data-g="${i}"><span>${ic(g[0])}</span>${g[1]}</button>`).join("");
+const SGM={home:["home","namaz"],namaz:["home","namaz"],cal:["cal","events"],events:["cal","events"]},LB={home:"Home",namaz:"Namaz",cal:"Calendar",events:"Events"};
+function tab(t){
+  const gi=GR.findIndex(g=>g[2].includes(t)),sg=SGM[t];
+  if(t!==tab.cur){tab.prev=tab.cur;tab.cur=t}
+  TABS.forEach(x=>$("#"+x).classList.toggle("hide",x!==t));
+  $("#nav").innerHTML=sg?sg.map(x=>`<button data-t="${x}" class="${x===t?"on":""}">${LB[x]}</button>`).join(""):"";
+  $("#nav").classList.toggle("hide",!sg);
+  document.querySelectorAll("#bn button").forEach((b,i)=>b.classList.toggle("on",i===gi));
+  S("tab",t);window.scrollTo(0,0);
+  if(t==="hadith"&&!tab.h){tab.h=1;hbook()}if(t==="namaz"&&!tab.p){tab.p=1;prayer()}if(t==="events")events();if(t==="qlist"&&!tab.q){tab.q=1;slist()}
+}
+$("#nav").onclick=e=>{const b=e.target.closest("[data-t]");if(b)tab(b.dataset.t)};
+$("#bn").onclick=e=>{const b=e.target.closest("[data-g]");if(b)tab(GR[+b.dataset.g][2][0])};
+
+/* Home */
+const hcard=h=>`<button class="sp"><svg class="i"><use href="#i-spk"/></svg> Sunein</button><div class="ar">${h.ar}</div><div class="ur">${h.ur}</div><div class="src">${h.s}</div>`;
+function evOf(h){return EV[h.m+"-"+h.d]||""}
+function home(){
+  const n=new Date(),h=hj(n);
+  $("#gday").textContent=n.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  $("#hdate").textContent=h.d+" "+MN[h.m-1]+" "+h.y+" AH";
+  $("#hmon").textContent="Hijri tareekh (Umm al-Qura)";
+  const doy=Math.floor((n-new Date(n.getFullYear(),0,0))/864e5);
+  $("#dh").innerHTML=hcard(HAD[doy%HAD.length]);const q=QT[doy%QT.length];$("#dq").innerHTML=`<div class="ur" style="color:var(--tx)">${q[0]}</div><div class="src">${q[1]}</div>`;
+  $("#ev").textContent=evOf(h)||"Aaj koi khaas Islamic event nahin.";
+}
+
+/* Calendar */
+let cm=new Date();cm.setDate(1);let sd=new Date();
+function cal(){
+  const y=cm.getFullYear(),m=cm.getMonth(),first=new Date(y,m,1).getDay(),dim=new Date(y,m+1,0).getDate(),td=new Date();
+  const a=hj(new Date(y,m,1)),b=hj(new Date(y,m,dim));
+  $("#ct").textContent=cm.toLocaleDateString("en-GB",{month:"long",year:"numeric"})+" · "+MN[a.m-1]+(a.m!==b.m?" / "+MN[b.m-1]:"")+" "+b.y;
+  let h=WD.map(w=>`<div class="h">${w}</div>`).join("")+"<div></div>".repeat(first);
+  for(let i=1;i<=dim;i++){
+    const d=new Date(y,m,i),k=hj(d),c=["d"];
+    if(d.toDateString()===td.toDateString())c.push("t");
+    if(d.toDateString()===sd.toDateString())c.push("s");
+    if(evOf(k))c.push("e");
+    h+=`<button class="${c.join(" ")}" data-i="${i}"><b>${i}</b><i>${k.d}</i></button>`;
+  }
+  $("#cg").innerHTML=h;
+  const k=hj(sd);
+  $("#sel").textContent=sd.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})+" = "+k.d+" "+MN[k.m-1]+" "+k.y+" AH";
+  $("#sev").textContent=evOf(k)||"Koi khaas event nahin.";
+}
+$("#cg").onclick=e=>{const b=e.target.closest("[data-i]");if(b){sd=new Date(cm.getFullYear(),cm.getMonth(),+b.dataset.i);cal()}};
+$("#pm").onclick=()=>{cm.setMonth(cm.getMonth()-1);cal()};
+$("#nm").onclick=()=>{cm.setMonth(cm.getMonth()+1);cal()};
+document.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{adj=+b.dataset.a;S("adj",adj);home();cal();events()});
+
+/* Quran (poora Quran, alquran.cloud API se) */
+const NM=["Al-Fatiha","Al-Baqarah","Aal-E-Imran","An-Nisa","Al-Maidah","Al-Anam","Al-Araf","Al-Anfal","At-Tawbah","Yunus","Hud","Yusuf","Ar-Rad","Ibrahim","Al-Hijr","An-Nahl","Al-Isra","Al-Kahf","Maryam","Ta-Ha","Al-Anbiya","Al-Hajj","Al-Muminun","An-Nur","Al-Furqan","Ash-Shuara","An-Naml","Al-Qasas","Al-Ankabut","Ar-Rum","Luqman","As-Sajdah","Al-Ahzab","Saba","Fatir","Ya-Sin","As-Saffat","Sad","Az-Zumar","Ghafir","Fussilat","Ash-Shura","Az-Zukhruf","Ad-Dukhan","Al-Jathiyah","Al-Ahqaf","Muhammad","Al-Fath","Al-Hujurat","Qaf","Adh-Dhariyat","At-Tur","An-Najm","Al-Qamar","Ar-Rahman","Al-Waqiah","Al-Hadid","Al-Mujadila","Al-Hashr","Al-Mumtahanah","As-Saff","Al-Jumuah","Al-Munafiqun","At-Taghabun","At-Talaq","At-Tahrim","Al-Mulk","Al-Qalam","Al-Haqqah","Al-Maarij","Nuh","Al-Jinn","Al-Muzzammil","Al-Muddaththir","Al-Qiyamah","Al-Insan","Al-Mursalat","An-Naba","An-Naziat","Abasa","At-Takwir","Al-Infitar","Al-Mutaffifin","Al-Inshiqaq","Al-Buruj","At-Tariq","Al-Ala","Al-Ghashiyah","Al-Fajr","Al-Balad","Ash-Shams","Al-Layl","Ad-Duha","Ash-Sharh","At-Tin","Al-Alaq","Al-Qadr","Al-Bayyinah","Az-Zalzalah","Al-Adiyat","Al-Qariah","At-Takathur","Al-Asr","Al-Humazah","Al-Fil","Quraysh","Al-Maun","Al-Kausar","Al-Kafirun","An-Nasr","Al-Masad","Al-Ikhlas","Al-Falaq","An-Nas"];
+$("#ss").innerHTML=NM.map((s,i)=>`<option value="${i}">${i+1}. ${s}</option>`).join("");
+const BW=w=>w.replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g,"").replace(/\u0671/g,"\u0627");
+async function load(n){
+  const ip=$("#fa").value==="IndoPak",k="q2"+n+(ip?"i":"")+LG,c=G(k);
+  if(c){try{return JSON.parse(c)}catch(e){}}
+  const r=await fetch("https://api.alquran.cloud/v1/surah/"+n+"/editions/quran-uthmani,"+(QED[LG]||"ur.jalandhry"));
+  const j=await r.json();
+  let ar=j.data[0].ayahs.map(a=>a.text);const ur=j.data[1].ayahs.map(a=>LG==="ar"?"":a.text),nums=j.data[0].ayahs.map(a=>a.number);if(ip){try{const v=await(await fetch("https://api.quran.com/api/v4/quran/verses/indopak?chapter_number="+n)).json(),x=v.verses.map(a=>a.text_indopak);if(x.length===ar.length)ar=x}catch(e){}}
+  if(n>1&&n!==9){const w=ar[0].split(" ");if(BW(w[0]).startsWith("\u0628\u0633\u0645"))ar[0]=w.slice(4).join(" ")}
+  const o={ar,ur,nums,b:n>1&&n!==9?1:0};S(k,JSON.stringify(o));return o;
+}
+let qt=0;const ad=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
+async function quran(){
+  const n=+$("#ss").value+1,my=++qt;S("sur",$("#ss").value);
+  document.documentElement.style.setProperty("--fs",fs+"px");
+  $("#qv").innerHTML='<div class="mut">Load ho raha hai…</div>';
+  let s;
+  try{s=await load(n)}catch(e){
+    const f=SUR.find(x=>x.n===NM[n-1]);
+    if(!f){if(my===qt)$("#qv").innerHTML='<div class="mut">Internet se load nahin ho saka. Connection check karke dobara koshish karein.</div>';return}
+    s=f;
+  }
+  if(my!==qt)return;CUR=s;
+  $("#qv").innerHTML=(s.b?`<div class="ar" style="text-align:center">${BIS}</div>`:"")+s.ar.map((a,i)=>`<div class="ay" data-i="${i}"><button class="sp" data-q="${i}"><svg class="i"><use href="#i-play"/></svg> Yahan se sunein</button><div class="ar">${a} <span class="en">﴿${ad(i+1)}﴾</span></div><div class="ur">${s.ur[i]}</div></div>`).join("");
+}
+$("#ss").onchange=quran;
+$("#fm").onclick=()=>{fs=Math.max(18,fs-2);S("fs",fs);quran()};
+$("#fp").onclick=()=>{fs=Math.min(48,fs+2);S("fs",fs);quran()};
+
+/* Hadith kitabein (hadith-api) */
+const HB=[["bukhari","Sahih Bukhari"],["muslim","Sahih Muslim"],["abudawud","Sunan Abu Dawud"],["tirmidhi","Jami at-Tirmidhi"],["nasai","Sunan an-Nasai"],["ibnmajah","Sunan Ibn Majah"]];
+const HU="https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/",ERR='<div class="card mut">Load nahin ho saka. Internet check karke dobara koshish karein.</div>';
+async function jf(u){const k="j"+u,c=G(k);if(c){try{return JSON.parse(c)}catch(e){}}const r=await fetch(HU+u);if(!r.ok)throw 0;const j=await r.json();S(k,JSON.stringify(j));return j}
+async function hbook(){
+  const b=$("#hb").value;S("hbk",b);$("#hs").innerHTML="<option>Load ho raha hai…</option>";
+  try{let j;try{j=await jf("eng-"+b+"/sections/1.json")}catch(e){j=await jf("eng-"+b+"/sections/0.json")}
+    SEC=Object.entries(j.metadata.section).filter(e=>e[1]);$("#hs").innerHTML='<option value="all">Poori kitab (sari hadees)</option>'+SEC.map(e=>`<option value="${e[0]}">${e[0]}. ${e[1]}</option>`).join("");hsec()}
+  catch(e){$("#hl").innerHTML=ERR}
+}
+let HD=[],hp=20,SEC=[],AL=[],ai=0,HM=0;
+const gr=h=>(h.grades||[]).map(x=>x.grade).filter(Boolean).join(", "),opt=p=>jf(p).catch(()=>({hadiths:[]}));
+async function loadSec(b,s){
+  const [a,u]=await Promise.all([jf("ara-"+b+"/sections/"+s+".json"),TE()?opt(TE()+"-"+b+"/sections/"+s+".json"):Promise.resolve({hadiths:[]})]);
+  const um={};u.hadiths.forEach(h=>um[h.hadithnumber]=h.text);
+  return a.hadiths.map(h=>({n:h.hadithnumber,ar:h.text,ur:um[h.hadithnumber]||"",g:gr(h)}));
+}
+async function more(){const b=$("#hb").value;while(ai<AL.length&&HD.length<hp){HD=HD.concat(await loadSec(b,AL[ai++]))}}
+async function hsec(){
+  const b=$("#hb").value,s=$("#hs").value;if(!s)return;
+  $("#hl").innerHTML='<div class="card mut">Load ho raha hai…</div>';hp=20;HD=[];ai=0;HM=s==="all";
+  try{if(HM){AL=SEC.map(e=>e[0]);await more()}else{AL=[];HD=await loadSec(b,s)}had()}
+  catch(e){$("#hl").innerHTML=ERR}
+}
+$("#hg").onclick=async()=>{
+  const n=$("#hn").value,b=$("#hb").value;if(!n)return;
+  try{const [a,u]=await Promise.all([jf("ara-"+b+"/"+n+".json"),TE()?opt(TE()+"-"+b+"/"+n+".json"):Promise.resolve({hadiths:[]})]),x=a.hadiths[0];
+    HD=[{n,ar:x.text,ur:u.hadiths[0]?u.hadiths[0].text:"",g:gr(x)}];AL=[];HM=0;$("#hq").value="";hp=20;had()}
+  catch(e){$("#hl").innerHTML='<div class="card mut">Ye hadith number nahin mila.</div>'}
+};
+function had(){
+  const q=$("#hq").value.trim().toLowerCase(),bn=$("#hb").selectedOptions[0].text;
+  const r=HD.filter(h=>!q||(h.ur+h.ar+h.n).toLowerCase().includes(q));
+  $("#hl").innerHTML=r.slice(0,hp).map(h=>`<div class="card"><button class="sp"><svg class="i"><use href="#i-spk"/></svg> Sunein</button><div class="ar">${h.ar}</div><div class="ur">${h.ur}</div><div class="src">${bn} · Hadith ${h.n}${h.g?" · "+h.g:""}</div></div>`).join("")||'<div class="card mut">Kuch nahin mila.</div>';
+  $("#hm").classList.toggle("hide",r.length<=hp&&ai>=AL.length);
+}
+$("#hb").onchange=hbook;$("#hs").onchange=hsec;$("#hq").oninput=()=>{hp=20;had()};$("#hm").onclick=async()=>{hp+=20;if(HM)try{await more()}catch(e){}had()};
+
+/* Namaz ke auqaat (aladhan.com) */
+const CT=[["Karachi","Pakistan"],["Lahore","Pakistan"],["Islamabad","Pakistan"],["Rawalpindi","Pakistan"],["Peshawar","Pakistan"],["Quetta","Pakistan"],["Multan","Pakistan"],["Faisalabad","Pakistan"],["Hyderabad","Pakistan"],["Makkah","Saudi Arabia"],["Madinah","Saudi Arabia"]];
+$("#city").innerHTML=CT.map((c,i)=>`<option value="${i}">${c[0]}</option>`).join("");
+const PN=[["Fajr","Fajr"],["Sunrise","Sooraj nikalna"],["Dhuhr","Zuhr"],["Asr","Asr"],["Maghrib","Maghrib"],["Isha","Isha"]];
+let PT=null;
+const h12=s=>{const[h,m]=s.split(":").map(Number);return (h%12||12)+":"+String(m).padStart(2,"0")+(h<12?" AM":" PM")};
+async function prayer(co){
+  const d=new Date(),ds=String(d.getDate()).padStart(2,"0")+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+d.getFullYear(),q="method=1&school=1";
+  let u="https://api.aladhan.com/v1/",key;
+  if(co){u+="timings/"+ds+"?latitude="+co.latitude+"&longitude="+co.longitude+"&"+q;key="pg"+ds+co.latitude.toFixed(1)+co.longitude.toFixed(1)}
+  else{const c=CT[+$("#city").value||0];u+="timingsByCity/"+ds+"?city="+c[0]+"&country="+encodeURIComponent(c[1])+"&"+q;key="p"+ds+c[0];S("city",$("#city").value)}
+  $("#pt").innerHTML='<span class="mut">Load ho raha hai…</span>';
+  try{
+    let t=null;const c=G(key);if(c)t=JSON.parse(c);
+    if(!t){const j=await (await fetch(u)).json();t=j.data.timings;S(key,JSON.stringify(t))}
+    PT={};PN.forEach(p=>PT[p[0]]=t[p[0]].split(" ")[0]);
+    $("#pt").innerHTML=PN.map(p=>`<div class="pr"><span>${p[1]}</span><b>${h12(PT[p[0]])}</b></div>`).join("");
+    $("#hp").innerHTML=PN.map(p=>`<div class="tl"><small>${p[1]}</small><b>${h12(PT[p[0]])}</b></div>`).join("");nxt();
+  }catch(e){PT=null;$("#pt").innerHTML='<span class="mut">Auqaat load nahin ho sake. Internet check karein.</span>'}
+}
+function nxt(){
+  if(!PT)return;const n=new Date();let best=null;
+  for(const p of PN){if(p[0]==="Sunrise")continue;const[h,m]=PT[p[0]].split(":").map(Number),x=new Date(n.getFullYear(),n.getMonth(),n.getDate(),h,m);if(x>n){best=[p[1],x];break}}
+  if(!best){const[h,m]=PT.Fajr.split(":").map(Number);best=["Fajr (kal)",new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,h,m)]}
+  const df=Math.round((best[1]-n)/6e4);
+  $("#nxn").textContent=best[0]+" · "+h12(best[1].getHours()+":"+best[1].getMinutes());
+  $("#nxc").textContent=Math.floor(df/60)+" ghante "+df%60+" minute baaqi";$("#hn").textContent=$("#nxn").textContent;$("#hc").textContent=$("#nxc").textContent;document.querySelectorAll(".pr,.tl").forEach(r=>r.classList.toggle("nx",best[0].startsWith(r.firstChild.textContent)));
+}
+setInterval(nxt,30000);
+$("#city").onchange=()=>prayer();
+$("#gps").onclick=()=>navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>prayer(p.coords),()=>{$("#pt").innerHTML='<span class="mut">Location ki ijazat nahin mili.</span>'}):0;
+
+/* Islamic events */
+function events(){
+  const n=new Date(),o=[];
+  for(let i=0;i<365;i++){const d=new Date(n.getFullYear(),n.getMonth(),n.getDate()+i),h=hj(d),e=EV[h.m+"-"+h.d];if(e)o.push([d,e,h,i])}
+  $("#el").innerHTML=o.map(x=>`<div class="evi"><b>${x[1]}</b><div class="mut">${x[0].toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})} · ${x[2].d} ${MN[x[2].m-1]} ${x[2].y} AH</div><div class="src">${x[3]?x[3]+" din baaqi":"Aaj"}</div></div>`).join("");
+}
+
+/* Fonts */
+const FA=[["Scheherazade New","Scheherazade (saaf)"],["IndoPak","Indo-Pak (360 jaisa)"],["Amiri Quran","Amiri Quran"],["Amiri","Amiri"],["Noto Naskh Arabic","Naskh"]],FU=[["Noto Nastaliq Urdu","Nastaliq"],["Gulzar","Gulzar"],["Noto Naskh Arabic","Naskh"]];
+$("#fa").innerHTML=FA.map(f=>`<option value="${f[0]}">Arabic: ${f[1]}</option>`).join("");
+$("#fu").innerHTML=FU.map(f=>`<option value="${f[0]}">Urdu: ${f[1]}</option>`).join("");
+function fnt(){const r=document.documentElement.style;r.setProperty("--fa",'"'+$("#fa").value+'","Scheherazade New",serif');r.setProperty("--fu",'"'+$("#fu").value+'","Jameel Noori Nastaleeq",serif');S("fa2",$("#fa").value);S("fu",$("#fu").value)}
+$("#fa").onchange=()=>{fnt();quran()};$("#fu").onchange=fnt;$("#fb").onclick=()=>$("#fnt").classList.toggle("hide");
+/* Deeniyat: guide */
+const YT="";
+if(YT){$("#yt").classList.remove("hide");$("#ytl").href=YT}
+const TL=[["mosque","Namaz","g:namaz"],["drop","Wudu","g:wudu"],["coffin","Janaza","g:janaza"],["finger","6 Kalmay","g:kalmay"],["hands","Duain","g:dua"],["alif","Noorani Qaida","g:qaida"],["hadith","Hadith","t:hbooks"],["quran","Quran","t:qlist"]];
+$("#tiles").innerHTML=TL.map((x,i)=>`<button class="tile" data-i="${i}"><span>${ic(x[0])}</span>${x[1]}</button>`).join("");
+$("#tiles").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;const[k,v]=TL[+b.dataset.i][2].split(":");if(k==="g"){tab("guide");guide(v)}else tab(v)};
+const GK=[["namaz","Namaz"],["wudu","Wudu"],["janaza","Janaza"],["kalmay","6 Kalmay"],["dua","Rozmarra Duain"],["qaida","Noorani Qaida"]];
+const SA="سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالىٰ جَدُّكَ وَلَا إِلٰهَ غَيْرُكَ",DR="اَللّٰهُمَّ صَلِّ عَلىٰ مُحَمَّدٍ وَعَلىٰ آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلىٰ إِبْرَاهِيمَ وَعَلىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ اَللّٰهُمَّ بَارِكْ عَلىٰ مُحَمَّدٍ وَعَلىٰ آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلىٰ إِبْرَاهِيمَ وَعَلىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ",SH="أَشْهَدُ أَنْ لَّا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيكَ لَهٗ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُولُهٗ";
+const GD={
+namaz:[["Namaz se pehle","","Wudu, paak jism aur kapray, paak jagah, qibla ki taraf munh, namaz ka waqt aur dil se niyyat. (Hanafi tareeqe ke mutabiq.)"],
+["Rakaat ka bayan","","Fajr: 2 sunnat, 2 fard.<br>Zuhr: 4 sunnat, 4 fard, 2 sunnat.<br>Asr: 4 fard.<br>Maghrib: 3 fard, 2 sunnat.<br>Isha: 4 fard, 2 sunnat, 3 witr."],
+["Namaz ka tareeqa","","1. Qibla ruKh khare hon, niyyat karein.<br>2. Allahu Akbar keh kar hath kaanon tak uthayein, phir naaf ke neeche baandh lein.<br>3. Sana, phir Aoozu Billah aur Bismillah parhein.<br>4. Surah Fatiha aur koi surah parhein.<br>5. Allahu Akbar keh kar ruku mein jayein: Subhana Rabbiyal Azeem 3 dafa.<br>6. Sami Allahu liman hamidah keh kar seedhe hon.<br>7. Allahu Akbar keh kar sajda: Subhana Rabbiyal A’la 3 dafa. Phir baith kar doosra sajda.<br>8. Doosri rakaat isi tarah. Do rakaat ke baad Tashahhud ke liye baithein.<br>9. Aakhri qaida mein Tashahhud, Durood aur dua parh kar dayen aur bayen salam pherein."],
+["Sana","","سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالىٰ جَدُّكَ وَلَا إِلٰهَ غَيْرُكَ"],
+["Tashahhud (Attahiyat)","","التَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهٗ اَلسَّلَامُ عَلَيْنَا وَعَلىٰ عِبَادِ اللّٰهِ الصَّالِحِينَ "+SH],
+["Durood-e-Ibrahim","",DR],
+["Dua (aakhri qaida mein)","","رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ"]],
+wudu:[["Wudu ka tareeqa","","1. Dil mein niyyat karein aur Bismillah parhein.<br>2. Dono hath kalaiyon tak 3 dafa dhoyein.<br>3. Kulli 3 dafa karein.<br>4. Naak mein pani daal kar 3 dafa saaf karein.<br>5. Poora chehra 3 dafa dhoyein.<br>6. Pehle seedha, phir ulta bazu kohni samet 3 dafa dhoyein.<br>7. Poore sar ka masah ek dafa, saath kaanon ka masah.<br>8. Pehle seedha, phir ulta pair takhnon samet 3 dafa dhoyein, ungliyon ka khilal karein.<br>Pani zaya na karein."],
+["Wudu ke baad ki dua","",SH+" اَللّٰهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ"],
+["Wudu tootne ki wajuhat","","Peshab ya paikhana, hawa kharij hona, behta hua khoon ya peep, munh bhar ulti, gehri neend, behoshi."]],
+janaza:[["Namaz-e-Janaza ka tareeqa","","Ye fard-e-kifaya hai. Is mein ruku aur sajda nahin hota, sirf khare ho kar 4 takbeerein hoti hain.<br>1. Qibla ruKh khare hon aur niyyat karein.<br>2. Pehli takbeer: hath baandh kar Sana parhein.<br>3. Doosri takbeer: Durood-e-Ibrahim parhein.<br>4. Teesri takbeer: Janaza ki dua parhein.<br>5. Chauthi takbeer: dua ke baghair dayen aur bayen salam pherein."],
+["Sana","",SA],["Durood-e-Ibrahim","",DR],
+["Janaza ki dua (baaligh ke liye)","","اَللّٰهُمَّ اغْفِرْ لِحَيِّنَا وَمَيِّتِنَا وَشَاهِدِنَا وَغَائِبِنَا وَصَغِيرِنَا وَكَبِيرِنَا وَذَكَرِنَا وَأُنْثَانَا اَللّٰهُمَّ مَنْ أَحْيَيْتَهٗ مِنَّا فَأَحْيِهِ عَلَى الْإِسْلَامِ وَمَنْ تَوَفَّيْتَهٗ مِنَّا فَتَوَفَّهٗ عَلَى الْإِيمَانِ"]],
+kalmay:[["1. Kalima Tayyab","لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَّسُولُ اللّٰهِ","Allah ke siwa koi mabood nahin, Muhammad ﷺ Allah ke rasool hain."],
+["2. Kalima Shahadat","أَشْهَدُ أَنْ لَّا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيكَ لَهٗ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُولُهٗ","Main gawahi deta hun ke Allah ke siwa koi mabood nahin, wo akela hai, us ka koi shareek nahin, aur Muhammad ﷺ us ke bande aur rasool hain."],
+["3. Kalima Tamjeed","سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلٰهَ إِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ","Allah paak hai, sab tareef Allah ke liye hai, Allah ke siwa koi mabood nahin, Allah sab se bara hai, aur gunah se bachne aur neki ki taqat Allah hi se hai."],
+["4. Kalima Tawheed","لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيكَ لَهٗ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ حَيٌّ لَّا يَمُوتُ أَبَدًا أَبَدًا ذُو الْجَلَالِ وَالْإِكْرَامِ بِيَدِهِ الْخَيْرُ وَهُوَ عَلىٰ كُلِّ شَيْءٍ قَدِيرٌ","Allah ke siwa koi mabood nahin, wo akela hai, badshahi aur tareef usi ki hai, wahi zindagi aur maut deta hai, wo hamesha zinda hai, us ke hath mein bhalai hai aur wo har cheez par qadir hai."],
+["5. Kalima Astaghfar","أَسْتَغْفِرُ اللّٰهَ رَبِّي مِنْ كُلِّ ذَنْبٍ أَذْنَبْتُهٗ عَمَدًا أَوْ خَطَأً سِرًّا أَوْ عَلَانِيَةً وَأَتُوبُ إِلَيْهِ مِنَ الذَّنْبِ الَّذِي أَعْلَمُ وَمِنَ الذَّنْبِ الَّذِي لَا أَعْلَمُ إِنَّكَ أَنْتَ عَلَّامُ الْغُيُوبِ وَسَتَّارُ الْعُيُوبِ وَغَفَّارُ الذُّنُوبِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ","Main apne rab Allah se har us gunah ki maafi mangta hun jo jaan boojh kar ya bhool kar, chhup kar ya khule aam kiya, aur un gunahon se bhi jinhein main jaanta hun ya nahin jaanta."],
+["6. Kalima Radd-e-Kufr","اَللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ أَنْ أُشْرِكَ بِكَ شَيْئًا وَأَنَا أَعْلَمُ بِهٖ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ بِهٖ تُبْتُ عَنْهُ وَتَبَرَّأْتُ مِنَ الْكُفْرِ وَالشِّرْكِ وَالْكِذْبِ وَالْغِيبَةِ وَالْبِدْعَةِ وَالنَّمِيمَةِ وَالْفَوَاحِشِ وَالْبُهْتَانِ وَالْمَعَاصِي كُلِّهَا وَأَسْلَمْتُ وَأَقُولُ لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَّسُولُ اللّٰهِ","Ya Allah, main jaante hue shirk karne se teri panah mangta hun, aur anjaane mein hone wale shirk se maafi mangta hun. Main kufr, shirk, jhoot, gheebat, bidat, chughli, behayai, bohtan aur sab gunahon se tauba karta hun, aur Islam laya hun."]],
+dua:[["Sa'e (uthne ki dua)","اَلْحَمْدُ لِلّٰهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ","Sab tareef Allah ke liye jis ne maut (neend) ke baad hamein zinda kiya, aur usi ki taraf lautna hai. (Bukhari)"],
+["Sone se pehle","اَللّٰهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا","Ya Allah, tere hi naam se marta hun aur jeeta hun. (Bukhari)"],
+["Khana khane se pehle","بِسْمِ اللّٰهِ","Allah ke naam se. Bhool jaye to yaad aane par: Bismillahi awwalahu wa aakhirah."],
+["Khana khane ke baad","اَلْحَمْدُ لِلّٰهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ","Sab tareef Allah ke liye jis ne hamein khilaya, pilaya aur Muslim banaya. (Abu Dawud, Tirmidhi)"],
+["Ghar se nikalte waqt","بِسْمِ اللّٰهِ تَوَكَّلْتُ عَلَى اللّٰهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ","Allah ke naam se, maine Allah par bharosa kiya. (Abu Dawud)"],
+["Masjid mein dakhil hote waqt","اَللّٰهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ","Ya Allah, mere liye apni rehmat ke darwaze khol de. (Muslim)"],
+["Masjid se nikalte waqt","اَللّٰهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ","Ya Allah, main tujh se tere fazl ka sawal karta hun. (Muslim)"],
+["Bait-ul-khala mein jaane se pehle","اَللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ","Ya Allah, main tujh se napaak jinnon se panah mangta hun. (Bukhari)"],
+["Bait-ul-khala se nikal kar","غُفْرَانَكَ","Ya Allah, main teri maghfirat chahta hun. (Abu Dawud)"],
+["Safar ki dua","سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ","Paak hai wo jis ne ise hamare bas mein kiya, hum ise qabu nahin kar sakte the, aur hum apne rab ki taraf lautne wale hain. (Surah Az-Zukhruf 13-14)"],
+["Ilm mein izafe ki dua","رَبِّ زِدْنِي عِلْمًا","Aye mere rab, mera ilm barha de. (Surah Taha 114)"],
+["Walidain ke liye dua","رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا","Aye mere rab, in dono par reham farma jaisa unhon ne bachpan mein meri parwarish ki. (Surah Bani Israel 24)"],
+["Dunya aur aakhirat ki bhalai","رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ","Aye hamare rab, hamein dunya aur aakhirat mein bhalai de aur hamein aag ke azab se bacha. (Surah Al-Baqarah 201)"]],
+qaida:[["Sabaq 2: Harkaat","اَ اِ اُ بَ بِ بُ تَ تِ تُ","Zabar (َ) “a”, Zer (ِ) “i” aur Pesh (ُ) “u” ki awaaz deta hai: ba, bi, bu."],
+["Sabaq 3: Tanween","بً بٍ بٌ","Do zabar “an”, do zer “in”, do pesh “un”: ban, bin, bun."],
+["Sabaq 4: Khari harkaat","بَا بِي بُو","Khari zabar, khari zer aur ulti pesh se awaaz lambi hoti hai: baa, bee, boo."],
+["Sabaq 5: Jazm (Sukoon)","اَبْ اِبْ اُبْ","Jazm wale harf par ruk kar pichle harf se mila kar parhte hain: ab, ib, ub."],
+["Sabaq 6: Shadd (Tashdeed)","رَبَّ","Shadd wala harf do dafa parha jata hai: rab-ba."],
+["Mashwara","","Sahi talaffuz (makhraj) ke liye kisi qari ya ustaad se sabaq lena zaroori hai."]]};
+const HJ=[["ا","Alif"],["ب","Be"],["ت","Te"],["ث","Se"],["ج","Jeem"],["ح","Hay"],["خ","Khay"],["د","Daal"],["ذ","Zaal"],["ر","Re"],["ز","Ze"],["س","Seen"],["ش","Sheen"],["ص","Suaad"],["ض","Zuaad"],["ط","Toay"],["ظ","Zoay"],["ع","Ain"],["غ","Ghain"],["ف","Fe"],["ق","Qaaf"],["ک","Kaaf"],["ل","Laam"],["م","Meem"],["ن","Noon"],["و","Waao"],["ہ","Hay"],["ء","Hamza"],["ی","Ye"]];
+function guide(k){
+  S("gk",k);
+  $("#gt").innerHTML=GK.map(x=>`<button data-k="${x[0]}" class="${x[0]===k?"on":""}">${x[1]}</button>`).join("");
+  const q=k==="qaida"?`<div class="card"><b>سبق ۱: حروفِ تہجی (۲۹ حروف)</b><div class="hj" style="margin-top:8px">${HJ.map(h=>`<div><b>${h[0]}</b><small>${h[1]}</small></div>`).join("")}</div></div>`:"";
+  $("#gc").innerHTML=q+GD[k].map(c=>`<div class="card"><b>${c[0]}</b>${c[1]?'<button class="sp"><svg class="i"><use href="#i-spk"/></svg> Sunein</button>':""}${c[1]?`<div class="ar">${c[1]}</div>`:""}<div class="gb">${c[2]}</div></div>`).join("");
+}
+$("#gt").onclick=e=>{const b=e.target.closest("[data-k]");if(b)guide(b.dataset.k)};
+setTimeout(()=>{$("#sp").classList.add("out");setTimeout(()=>$("#sp").remove(),800)},2600);
+/* Islam360-style sections */
+const CD=(a,b)=>a.map(x=>`<button class="bc" data-go="${x[2]}"><span class="ic">${ic(x[0])}</span>${x[1]}</button>`).join("");
+$("#ibl").innerHTML=CD([["mosque","Namaz","g:namaz"],["moon","Roza","g:roza"],["tent","Hajj","g:hajj"],["kaaba","Umrah","g:umrah"],["coffin","Janaza","g:janaza"],["drop","Wudu","g:wudu"]]);
+$("#mol").innerHTML=CD([["alif","Noorani Qaida","g:qaida"],["compass","Qibla","qibla"],["beads","Tasbeeh","tasbeeh"],["calendar","Calendar","cal"],["star","Events","events"],["finger","6 Kalmay","g:kalmay"],["hands","Rozmarra Duain","g:dua"],["drop","Wudu","g:wudu"]]);
+const HBK=[["bukhari","صحيح البخاري","Sahih Bukhari","#c58f00"],["muslim","صحيح مسلم","Sahih Muslim","#3e8e63"],["tirmidhi","جامع الترمذي","Jami at-Tirmidhi","#b4523c"],["abudawud","سنن أبي داود","Sunan Abu Dawud","#2f7fd0"],["nasai","سنن النسائي","Sunan an-Nasai","#1ea77d"],["ibnmajah","سنن ابن ماجه","Sunan Ibn Majah","#7a55d0"]];
+$("#hbl").innerHTML=HBK.map(h=>`<button class="bc" data-go="b:${h[0]}"><span class="ar" style="color:${h[3]}">${h[1]}</span>${h[2]}</button>`).join("");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;const[k,v]=b.dataset.go.split(":");
+  if(k==="g"){tab("guide");guide(v)}else if(k==="b"){$("#hb").value=v;tab.h=1;tab("hadith");hbook()}else if(k==="back")tab(tab.prev&&tab.prev!=="guide"?tab.prev:"ib");else tab(k)});
+GD.roza=[["Roza kya hai","","Subah sadiq (Fajr ka waqt shuru hone) se Maghrib tak niyyat ke saath khane, peene aur biwi se ta'alluq se ruk jana."],["Sehri aur niyyat","وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ","Sehri khana sunnat hai. Niyyat dil se kafi hai, zubaan se bhi keh sakte hain."],["Iftar ki dua","ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللّٰهُ","Pyaas bujh gayi, rag-e-tar ho gayi aur inshaAllah ajar saabit ho gaya. (Sunan Abu Dawud 2357). Iftar mein jaldi karein."],["Roza tootne wali cheezein","","Jaan boojh kar khana peena, biwi se ta'alluq, jaan boojh kar ulti karna aur haiz/nifaas. Bhool kar khane peene se roza nahin tootta. Masail ke liye kisi aalim se rujoo karein."]];
+const TB="لَبَّيْكَ اللّٰهُمَّ لَبَّيْكَ لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ لَا شَرِيكَ لَكَ";
+GD.umrah=[["Ihram aur niyyat",TB,"Meeqat par ghusl ya wudu, ihram ki chadarein (mard), 2 rakat nafl aur Umrah ki niyyat. Phir talbiyah baar baar parhein. (Sahih Bukhari 1549)"],["Tawaf","","Hajr-e-Aswad se shuru kar ke Kaaba ke gird 7 chakkar. Phir Maqam-e-Ibrahim ke peeche 2 rakat nafl."],["Zamzam aur Sa'i","","Zamzam piyein. Safa se Marwa tak 7 phere (Safa se shuru, Marwa par khatam)."],["Halq ya Qasr","","Mard sar mundwayen ya baal chhote karwayen; aurat ungli ke pore barabar baal katwaye. Umrah mukammal."]];
+GD.hajj=[["8 Zil Hijjah","","Ihram baandh kar Mina jayein aur wahan namazein parhein."],["9 Zil Hijjah","","Arafat mein wuqoof karein (Hajj ka sab se bada rukn), phir Muzdalifa mein raat guzarein."],["10 Zil Hijjah","","Jamrat-ul-Aqaba ko 7 kankar, qurbani, halq ya qasr aur tawaf-e-ziyarat."],["11 se 13 Zil Hijjah","","Har din tino jamarat ko kankariyan maarein. Rawangi se pehle Tawaf-e-Wida karein."],["Talbiyah",TB,"Hajj mein bhi talbiyah parhein. Hajj ke tafseeli masail ke liye kisi mustanad aalim ya mu'allim se rahnumai lein."]];
+GK.push(["roza","Roza"],["umrah","Umrah"],["hajj","Hajj"]);
+/* Quran: har surah alag card */
+let SL=null,qt2="all";
+const fv=()=>{try{return JSON.parse(G("fv")||"[]")}catch(e){return[]}};
+async function slist(){
+  try{SL=JSON.parse(G("sl"))}catch(e){}
+  if(!SL){try{const j=await(await fetch("https://api.alquran.cloud/v1/surah")).json();SL=j.data.map(x=>[x.name.replace(/^سورة\s*/,""),x.numberOfAyahs]);S("sl",JSON.stringify(SL))}catch(e){}}
+  qrender();
+}
+function qrender(){
+  const f=fv(),l=G("lastS");
+  $("#lr").classList.toggle("hide",l===null);
+  if(l!==null)$("#lr").innerHTML=`<span>Aakhri baar: <b>${+l+1}. ${NM[+l]}</b></span><button class="on" data-s="${l}">Jaari rakhein</button>`;
+  $("#ql").innerHTML=NM.map((n,i)=>qt2==="fav"&&!f.includes(i)?"":`<div class="card sr" data-s="${i}"><span class="n">${i+1}</span><div class="m"><b>${n}</b><div class="mut">${SL?SL[i][1]+" ayat":""}</div></div><div class="ar">${SL?SL[i][0]:""}</div><button class="hv" data-f="${i}">${ic("heart",f.includes(i))}</button></div>`).join("")||'<div class="card mut">Abhi koi pasandeeda surah nahin.</div>';
+}
+function openS(i){S("lastS",i);$("#ss").value=i;tab("quran");quran()}
+$("#qlist").onclick=e=>{
+  const h=e.target.closest("[data-f]");
+  if(h){const i=+h.dataset.f,f=fv(),k=f.indexOf(i);k<0?f.push(i):f.splice(k,1);S("fv",JSON.stringify(f));return qrender()}
+  const q=e.target.closest("[data-qt]");
+  if(q){qt2=q.dataset.qt;document.querySelectorAll("[data-qt]").forEach(b=>b.classList.toggle("on",b===q));return qrender()}
+  const s=e.target.closest("[data-s]");if(s)openS(+s.dataset.s);
+};
+/* Qibla + Tasbeeh */
+let QB=null,HDG=null,gotS=0,absS=0,wasOk=0;
+(()=>{let s="";for(let i=0;i<72;i++){const L=i%9===0?12:6;s+=`<line x1="0" y1="-100" x2="0" y2="${-100+L}" transform="rotate(${i*5})" stroke-width="${i%9===0?2:1}" stroke="var(--mut)"/>`}$("#ticks").innerHTML=s})();
+function draw(){
+  if(HDG!==null){$("#ring").setAttribute("transform","rotate("+(-HDG)+")");$("#qh").textContent="Aap ka rukh: "+Math.round(HDG)+"°"}
+  if(QB===null)return;
+  $("#qm").setAttribute("transform","rotate("+QB+")");
+  if(HDG===null){$("#needle").setAttribute("transform","rotate("+QB+")");$("#qd").textContent="Qibla: "+Math.round(QB)+"° (Shumal se)";return}
+  const d=((QB-HDG+540)%360)-180,ok=Math.abs(d)<6;
+  $("#needle").setAttribute("transform","rotate("+d+")");$("#cmp").classList.toggle("ok",ok);
+  if(ok&&!wasOk&&navigator.vibrate)navigator.vibrate(40);wasOk=ok;
+  $("#qd").textContent=ok?"✔ Aap Qibla ki taraf hain":"Qibla: "+Math.round(QB)+"° · "+Math.abs(Math.round(d))+"° "+(d>0?"dayen":"bayen")+" ghoomein";
+}
+function setH(h){if(HDG===null)HDG=h;else{const d=((h-HDG+540)%360)-180;HDG=(HDG+d*.25+360)%360}draw()}
+addEventListener("deviceorientationabsolute",e=>{if(e.alpha!=null){absS=1;gotS=1;setH((360-e.alpha)%360)}},true);
+addEventListener("deviceorientation",e=>{if(e.webkitCompassHeading!=null){gotS=1;setH(e.webkitCompassHeading)}else if(!absS&&e.absolute&&e.alpha!=null){gotS=1;setH((360-e.alpha)%360)}},true);
+$("#qg").onclick=async()=>{
+  try{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission)await DeviceOrientationEvent.requestPermission()}catch(e){}
+  $("#qd").textContent="Location dhoondi ja rahi hai…";
+  navigator.geolocation.getCurrentPosition(p=>{const r=Math.PI/180,a=p.coords.latitude*r,b=p.coords.longitude*r,k=21.4225*r,l=39.8262*r,y=Math.sin(l-b)*Math.cos(k),x=Math.cos(a)*Math.sin(k)-Math.sin(a)*Math.cos(k)*Math.cos(l-b);QB=(Math.atan2(y,x)/r+360)%360;draw();
+    setTimeout(()=>{if(!gotS)$("#qh").textContent="Is phone mein compass sensor nahin mila. Oopar diya degree Shumal se Qibla ki simt hai."},2500)},
+    ()=>{$("#qd").textContent="Location ki ijazat dein."},{enableHighAccuracy:true});
+};
+let tc=parseInt(G("tc"))||0;$("#tn").textContent=tc;
+$("#tb").onclick=()=>{tc++;S("tc",tc);$("#tn").textContent=tc;if(navigator.vibrate)navigator.vibrate(15)};
+$("#tr").onclick=()=>{tc=0;S("tc",0);$("#tn").textContent=0};
+
+
+/* Zaban + Awaaz */
+const LGS=[["ur","اردو"],["en","English"],["ar","العربية (sirf Arabi)"],["pa","پنجابی (Urdu tarjuma)"],["hi","हिन्दी"],["bn","বাংলা"],["id","Indonesia"],["tr","Türkçe"],["ru","Русский"],["fr","Français"]];
+const QED={ur:"ur.jalandhry",pa:"ur.jalandhry",en:"en.sahih",hi:"hi.hindi",bn:"bn.bengali",id:"id.indonesian",tr:"tr.diyanet",ru:"ru.kuliev",fr:"fr.hamidullah"};
+const TTS={ur:"ur-PK",pa:"ur-PK",en:"en-US",ar:"ar-SA",hi:"hi-IN",bn:"bn-BD",id:"id-ID",tr:"tr-TR",ru:"ru-RU",fr:"fr-FR"};
+function TE(){const m={ur:"urd",pa:"urd",en:"eng",hi:"eng",fr:"eng",bn:"ben",id:"ind",tr:"tur",ru:"rus",ar:""};return m[LG]===undefined?"urd":m[LG]}
+let LG=G("lg")||"ur",CUR=null,AT=0;const AA=new Audio();
+$("#lg").innerHTML=LGS.map(l=>`<option value="${l[0]}">${l[1]}</option>`).join("");$("#lg").value=LG;
+$("#am").innerHTML='<option value="b">Awaaz: Arabi + Tarjuma</option><option value="a">Awaaz: Sirf Arabi</option><option value="t">Awaaz: Sirf Tarjuma</option>';
+const setL=()=>{document.body.dataset.rtl=["ur","pa","ar"].includes(LG)?1:0};setL();
+$("#lg").onchange=()=>{LG=$("#lg").value;S("lg",LG);setL();quran();if(tab.h)hsec()};
+function stopAll(){AT++;try{speechSynthesis.cancel()}catch(e){}AA.pause();document.querySelectorAll(".ay.pl").forEach(d=>d.classList.remove("pl"))}
+const speak=(x,l)=>new Promise(r=>{if(!x||!window.speechSynthesis)return r();const u=new SpeechSynthesisUtterance(x.replace(/<[^>]+>/g," "));u.lang=l;u.rate=.9;u.onend=u.onerror=r;speechSynthesis.speak(u)});
+async function sayCard(c){
+  stopAll();const my=AT,a=c.querySelector(".ar"),t=c.querySelector(".ur,.gb"),m=$("#am").value,gl=c.closest("#gc")?"ur-PK":TTS[LG]||"ur-PK";
+  if(a&&m!=="t"){await speak(a.textContent.replace(/[﴿﴾]/g,""),"ar-SA");if(my!==AT)return}
+  if(t&&m!=="a")await speak(t.textContent,gl);
+}
+async function playS(from){
+  if(!CUR)return;stopAll();const my=AT,m=$("#am").value;
+  for(let i=from;i<CUR.ar.length;i++){
+    if(my!==AT)return;
+    document.querySelectorAll("#qv .ay").forEach((d,j)=>d.classList.toggle("pl",j===i));
+    const row=document.querySelector('#qv .ay[data-i="'+i+'"]');if(row)row.scrollIntoView({block:"center",behavior:"smooth"});
+    if(m!=="t"&&CUR.nums)await new Promise(r=>{AA.src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/"+CUR.nums[i]+".mp3";AA.onended=AA.onerror=r;AA.play().catch(r)});
+    if(my!==AT)return;
+    if(m!=="a"&&CUR.ur[i])await speak(CUR.ur[i],TTS[LG]||"ur-PK");
+  }
+  stopAll();
+}
+$("#qp").onclick=()=>playS(0);$("#qs").onclick=stopAll;
+document.addEventListener("click",e=>{const b=e.target.closest(".sp");if(!b)return;if(b.dataset.q!==undefined)return playS(+b.dataset.q);sayCard(b.closest(".card,.ay"))});
+/* Urdu tarjuma wali kitab */
+const N=a=>a.map((x,i)=>(i+1).toLocaleString("ur-PK")+"۔ "+x).join("<br>");
+const ZS="سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالٰى جَدُّكَ وَلَا إِلٰهَ غَيْرُكَ",
+ZT="اَلتَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهٗ اَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُولُهٗ",
+ZD="اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَعَلٰى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلٰى إِبْرَاهِيمَ وَعَلٰى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَعَلٰى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلٰى إِبْرَاهِيمَ وَعَلٰى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ",
+ZM="رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي رَبَّنَا وَتَقَبَّلْ دُعَاءِ رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+ZJ="اَللّٰهُمَّ اغْفِرْ لِحَيِّنَا وَمَيِّتِنَا وَشَاهِدِنَا وَغَائِبِنَا وَصَغِيرِنَا وَكَبِيرِنَا وَذَكَرِنَا وَأُنْثَانَا اَللّٰهُمَّ مَنْ أَحْيَيْتَهٗ مِنَّا فَأَحْيِهٖ عَلَى الْإِسْلَامِ وَمَنْ تَوَفَّيْتَهٗ مِنَّا فَتَوَفَّهٗ عَلَى الْإِيمَانِ",
+ZB="لَبَّيْكَ اللّٰهُمَّ لَبَّيْكَ لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ لَا شَرِيكَ لَكَ";
+const uS="اے اللہ! تو پاک ہے اور تیری حمد کے ساتھ، تیرا نام بابرکت ہے، تیری شان بلند ہے اور تیرے سوا کوئی معبود نہیں۔",
+uT="تمام قولی، بدنی اور مالی عبادتیں اللہ ہی کے لیے ہیں۔ اے نبی! آپ پر سلام اور اللہ کی رحمت اور برکتیں ہوں۔ ہم پر اور اللہ کے نیک بندوں پر سلام ہو۔ میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں اور گواہی دیتا ہوں کہ محمد ﷺ اس کے بندے اور رسول ہیں۔",
+uD="اے اللہ! محمد ﷺ اور ان کی آل پر رحمت نازل فرما جیسے تو نے ابراہیم علیہ السلام اور ان کی آل پر رحمت نازل فرمائی، بے شک تو تعریف کے لائق اور بزرگی والا ہے۔ اے اللہ! محمد ﷺ اور ان کی آل پر برکت نازل فرما جیسے تو نے ابراہیم علیہ السلام اور ان کی آل پر برکت نازل فرمائی، بے شک تو تعریف کے لائق اور بزرگی والا ہے۔",
+uM="اے میرے رب! مجھے نماز قائم کرنے والا بنا اور میری اولاد میں سے بھی۔ اے ہمارے رب! میری دعا قبول فرما۔ اے ہمارے رب! مجھے، میرے والدین کو اور تمام مومنوں کو حساب کے دن بخش دے۔ (سورۃ ابراہیم 14:40-41)",
+uJ="اے اللہ! ہمارے زندہ اور مردہ، حاضر اور غائب، چھوٹے اور بڑے، مرد اور عورت سب کو بخش دے۔ اے اللہ! ہم میں سے جسے تو زندہ رکھے اسے اسلام پر زندہ رکھ اور جسے موت دے اسے ایمان پر موت دے۔ (جامع ترمذی 1024)",
+uB="میں حاضر ہوں، اے اللہ! میں حاضر ہوں، تیرا کوئی شریک نہیں، میں حاضر ہوں۔ بے شک تمام تعریف، نعمت اور بادشاہی تیری ہی ہے، تیرا کوئی شریک نہیں۔ (صحیح بخاری 1549)";
+Object.assign(GD,{
+namaz:[["نماز سے پہلے","","وضو، پاک جسم اور کپڑے، پاک جگہ، قبلہ کی طرف منہ، نماز کا وقت اور دل سے نیت۔ (حنفی فقہ کے مطابق)"],
+["رکعات کی تفصیل","","فجر: ۲ سنت، ۲ فرض۔<br>ظہر: ۴ سنت، ۴ فرض، ۲ سنت۔<br>عصر: ۴ فرض۔<br>مغرب: ۳ فرض، ۲ سنت۔<br>عشاء: ۴ فرض، ۲ سنت، ۳ وتر۔"],
+["نماز کا طریقہ","",N(["قبلہ رخ کھڑے ہو کر نیت کریں۔","دونوں ہاتھ کانوں تک اٹھا کر اللہ اکبر کہیں اور ناف کے نیچے ہاتھ باندھ لیں۔","ثنا پڑھیں، پھر اعوذ باللہ اور بسم اللہ کے بعد سورۃ الفاتحہ اور کوئی سورت پڑھیں۔","اللہ اکبر کہہ کر رکوع کریں اور تین بار سُبْحَانَ رَبِّيَ الْعَظِيمِ پڑھیں۔","سَمِعَ اللّٰهُ لِمَنْ حَمِدَهٗ کہہ کر سیدھے کھڑے ہوں اور رَبَّنَا لَكَ الْحَمْدُ کہیں۔","اللہ اکبر کہہ کر سجدہ کریں اور تین بار سُبْحَانَ رَبِّيَ الْأَعْلَىٰ پڑھیں۔","دو سجدوں کے درمیان بیٹھیں، پھر دوسرا سجدہ کریں۔","دوسری رکعت اسی طرح پڑھیں (ثنا کے بغیر)۔","قعدہ میں تشہد، درود ابراہیمی اور دعا پڑھیں۔","دائیں اور بائیں طرف السلام علیکم و رحمۃ اللہ کہہ کر سلام پھیریں۔"])],
+["ثنا",ZS,uS],["تشہد (التحیات)",ZT,uT],["درود ابراہیمی",ZD,uD],["دعائے ماثورہ",ZM,uM]],
+wudu:[["وضو کا طریقہ","",N(["دل میں نیت کریں اور بسم اللہ پڑھیں۔","دونوں ہاتھ کلائیوں تک تین بار دھوئیں۔","تین بار کلی کریں۔","ناک میں پانی ڈال کر تین بار صاف کریں۔","پورا چہرہ تین بار دھوئیں۔","دونوں ہاتھ کہنیوں سمیت تین بار دھوئیں، پہلے دایاں پھر بایاں۔","پورے سر کا ایک بار مسح کریں اور کانوں کا مسح کریں۔","دونوں پاؤں ٹخنوں سمیت تین بار دھوئیں، پہلے دایاں پھر بایاں۔"])],
+["وضو کے بعد کی دعا","أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيكَ لَهٗ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُولُهٗ","میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اور گواہی دیتا ہوں کہ محمد ﷺ اس کے بندے اور رسول ہیں۔ (صحیح مسلم 234)"],
+["وضو ٹوٹنے کی وجوہات","","پیشاب، پاخانہ، ہوا خارج ہونا، گہری نیند، بے ہوشی، منہ بھر کر قے، اور جسم سے خون یا پیپ بہہ کر نکلنا (حنفی فقہ)۔"]],
+janaza:[["نمازِ جنازہ کا طریقہ","",N(["جنازہ کی نماز فرضِ کفایہ ہے۔ اس میں رکوع اور سجدہ نہیں ہوتا، کھڑے ہو کر پڑھی جاتی ہے۔","نیت کر کے پہلی تکبیر کہیں اور ثنا پڑھیں۔","دوسری تکبیر کے بعد درود ابراہیمی پڑھیں۔","تیسری تکبیر کے بعد جنازے کی دعا پڑھیں۔","چوتھی تکبیر کے بعد دائیں اور بائیں سلام پھیر دیں۔"])],
+["ثنا",ZS,uS],["درود ابراہیمی",ZD,uD],["جنازے کی دعا (بالغ کے لیے)",ZJ,uJ]],
+kalmay:[["پہلا کلمہ طیب","لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَسُولُ اللّٰهِ","اللہ کے سوا کوئی معبود نہیں، محمد ﷺ اللہ کے رسول ہیں۔"],
+["دوسرا کلمہ شہادت","أَشْهَدُ أَنْ لَّا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيكَ لَهٗ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُولُهٗ","میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اور گواہی دیتا ہوں کہ محمد ﷺ اس کے بندے اور رسول ہیں۔"],
+["تیسرا کلمہ تمجید","سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلٰهَ إِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ","اللہ پاک ہے، سب تعریف اللہ کے لیے ہے، اللہ کے سوا کوئی معبود نہیں، اللہ سب سے بڑا ہے، اور گناہ سے بچنے اور نیکی کرنے کی طاقت صرف بلند و عظیم اللہ کی توفیق سے ہے۔"],
+["چوتھا کلمہ توحید","لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيكَ لَهٗ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ حَيٌّ لَّا يَمُوتُ أَبَدًا أَبَدًا ذُو الْجَلَالِ وَالْإِكْرَامِ بِيَدِهِ الْخَيْرُ وَهُوَ عَلٰى كُلِّ شَيْءٍ قَدِيرٌ","اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اسی کی بادشاہی اور اسی کی حمد ہے، وہی زندہ کرتا اور مارتا ہے، وہ ہمیشہ زندہ ہے اسے کبھی موت نہیں، بزرگی اور عزت والا ہے، اسی کے ہاتھ میں بھلائی ہے اور وہ ہر چیز پر قادر ہے۔"],
+["پانچواں کلمہ استغفار","أَسْتَغْفِرُ اللّٰهَ رَبِّي مِنْ كُلِّ ذَنْبٍ أَذْنَبْتُهٗ عَمَدًا أَوْ خَطَأً سِرًّا أَوْ عَلَانِيَةً وَأَتُوبُ إِلَيْهِ مِنَ الذَّنْبِ الَّذِي أَعْلَمُ وَمِنَ الذَّنْبِ الَّذِي لَا أَعْلَمُ إِنَّكَ أَنْتَ عَلَّامُ الْغُيُوبِ وَسَتَّارُ الْعُيُوبِ وَغَفَّارُ الذُّنُوبِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ","میں اپنے رب اللہ سے ہر اس گناہ کی معافی مانگتا ہوں جو میں نے جان بوجھ کر یا بھول کر، چھپ کر یا ظاہر کیا، اور اس گناہ سے بھی توبہ کرتا ہوں جسے میں جانتا ہوں اور جسے نہیں جانتا۔ بے شک تو غیبوں کا جاننے والا، عیبوں کو چھپانے والا اور گناہوں کو بخشنے والا ہے۔"],
+["چھٹا کلمہ رد کفر","اَللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ أَنْ أُشْرِكَ بِكَ شَيْئًا وَأَنَا أَعْلَمُ بِهٖ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ بِهٖ تُبْتُ عَنْهُ وَتَبَرَّأْتُ مِنَ الْكُفْرِ وَالشِّرْكِ وَالْكِذْبِ وَالْغِيبَةِ وَالْبِدْعَةِ وَالنَّمِيمَةِ وَالْفَوَاحِشِ وَالْبُهْتَانِ وَالْمَعَاصِي كُلِّهَا وَأَسْلَمْتُ وَأَقُولُ لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَسُولُ اللّٰهِ","اے اللہ! میں اس سے تیری پناہ مانگتا ہوں کہ جان بوجھ کر تیرے ساتھ کسی کو شریک کروں، اور جو نہیں جانتا اس کی تجھ سے معافی مانگتا ہوں۔ میں نے توبہ کی اور کفر، شرک، جھوٹ، غیبت، بدعت، چغلی، بے حیائی، بہتان اور تمام گناہوں سے بیزاری ظاہر کی، اور اسلام لایا، اور کہتا ہوں اللہ کے سوا کوئی معبود نہیں، محمد ﷺ اللہ کے رسول ہیں۔"]],
+dua:[["کھانے سے پہلے","بِسْمِ اللّٰهِ","اللہ کے نام سے (شروع کرتا ہوں)۔"],
+["کھانے کے بعد","اَلْحَمْدُ لِلّٰهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ","سب تعریف اللہ کے لیے جس نے ہمیں کھلایا، پلایا اور مسلمان بنایا۔ (سنن ابی داود 3850)"],
+["سونے سے پہلے","اَللّٰهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا","اے اللہ! تیرے نام کے ساتھ میں مرتا (سوتا) اور جیتا (جاگتا) ہوں۔ (صحیح بخاری 6324)"],
+["جاگنے کے بعد","اَلْحَمْدُ لِلّٰهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ","سب تعریف اللہ کے لیے جس نے ہمیں مارنے (سلانے) کے بعد زندہ کیا اور اسی کی طرف لوٹنا ہے۔ (صحیح بخاری 6312)"],
+["گھر سے نکلتے وقت","بِسْمِ اللّٰهِ تَوَكَّلْتُ عَلَى اللّٰهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ","اللہ کے نام سے، میں نے اللہ پر بھروسا کیا، اور اللہ کی توفیق کے بغیر نہ گناہ سے بچنے کی طاقت ہے نہ نیکی کی۔ (سنن ابی داود 5095)"],
+["مسجد میں داخل ہوتے وقت","اَللّٰهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ","اے اللہ! میرے لیے اپنی رحمت کے دروازے کھول دے۔ (صحیح مسلم 713)"],
+["مسجد سے نکلتے وقت","اَللّٰهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ","اے اللہ! میں تجھ سے تیرا فضل مانگتا ہوں۔ (صحیح مسلم 713)"],
+["بیت الخلا میں جانے سے پہلے","اَللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ","اے اللہ! میں ناپاک جنوں (مرد و عورت) کے شر سے تیری پناہ مانگتا ہوں۔ (صحیح بخاری 142)"],
+["بیت الخلا سے نکل کر","غُفْرَانَكَ","اے اللہ! میں تیری بخشش چاہتا ہوں۔ (سنن ابی داود 30)"],
+["سفر کی دعا","سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ","پاک ہے وہ ذات جس نے اس سواری کو ہمارے قابو میں کر دیا، ورنہ ہم اسے قابو میں نہ لا سکتے تھے، اور بے شک ہم اپنے رب کی طرف لوٹنے والے ہیں۔ (سورۃ الزخرف 43:13-14)"],
+["علم میں اضافے کی دعا","رَبِّ زِدْنِي عِلْمًا","اے میرے رب! میرے علم میں اضافہ فرما۔ (سورۃ طٰہٰ 20:114)"],
+["دنیا اور آخرت کی بھلائی","رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ","اے ہمارے رب! ہمیں دنیا میں بھلائی دے، آخرت میں بھلائی دے اور آگ کے عذاب سے بچا۔ (سورۃ البقرہ 2:201)"]],
+qaida:[["سبق ۲: حرکات (زبر، زیر، پیش)","اَ اِ اُ  بَ بِ بُ  تَ تِ تُ  ثَ ثِ ثُ","زبر سے 'اَ'، زیر سے 'اِ' اور پیش سے 'اُ' کی آواز آتی ہے۔"],
+["سبق ۳: تنوین","بً بٍ بٌ  تً تٍ تٌ","دو زبر 'ان'، دو زیر 'ین' اور دو پیش 'ون' کی آواز دیتے ہیں۔"],
+["سبق ۴: کھڑی حرکات","بٰ بٖ بٗ","کھڑی زبر، کھڑی زیر اور الٹا پیش کھینچ کر پڑھے جاتے ہیں۔"],
+["سبق ۵: جزم (سکون)","اَبْ اِبْ اُبْ","جس حرف پر جزم ہو اسے پہلے حرف سے ملا کر پڑھتے ہیں۔"],
+["سبق ۶: شد (تشدید)","رَبَّ","شد والا حرف دو بار پڑھا جاتا ہے۔"],
+["مشورہ","","روزانہ کسی استاد سے سن کر مشق کریں۔ باقی اسباق بعد میں شامل کیے جائیں گے۔"]],
+roza:[["روزہ کیا ہے","","صبحِ صادق (فجر کا وقت شروع ہونے) سے مغرب تک نیت کے ساتھ کھانے، پینے اور ازدواجی تعلق سے رکے رہنا۔"],
+["سحری اور نیت","وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ","میں نے ماہِ رمضان کے کل کے روزے کی نیت کی۔ سحری کھانا سنت ہے، نیت دل سے کافی ہے۔"],
+["افطار کی دعا","ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللّٰهُ","پیاس بجھ گئی، رگیں تر ہو گئیں اور اللہ نے چاہا تو اجر ثابت ہو گیا۔ (سنن ابی داود 2357) افطار میں جلدی کریں۔"],
+["روزہ ٹوٹنے کی وجوہات","","جان بوجھ کر کھانا پینا، ازدواجی تعلق، جان بوجھ کر قے کرنا اور حیض و نفاس۔ بھول کر کھانے پینے سے روزہ نہیں ٹوٹتا۔ مسائل کے لیے کسی عالم سے رجوع کریں۔"]],
+umrah:[["احرام اور نیت",ZB,"میقات پر غسل یا وضو، احرام کی چادریں (مرد)، دو رکعت نفل اور عمرے کی نیت کریں، پھر بار بار تلبیہ پڑھیں۔ "+uB],
+["طواف","","حجرِ اسود سے شروع کر کے کعبہ کے گرد ۷ چکر لگائیں، پھر مقامِ ابراہیم کے پیچھے ۲ رکعت نفل پڑھیں۔"],
+["زمزم اور سعی","","زمزم پئیں۔ صفا سے مروہ تک ۷ پھیرے لگائیں (صفا سے شروع اور مروہ پر ختم)۔"],
+["حلق یا قصر","","مرد سر منڈوائیں یا بال چھوٹے کروائیں، عورت انگلی کے پورے برابر بال کٹوائے۔ عمرہ مکمل ہو گیا۔"]],
+hajj:[["۸ ذوالحجہ","","احرام باندھ کر منیٰ جائیں اور وہاں نمازیں پڑھیں۔"],["۹ ذوالحجہ","","عرفات میں وقوف کریں (حج کا سب سے بڑا رکن)، پھر مزدلفہ میں رات گزاریں۔"],["۱۰ ذوالحجہ","","جمرۃ العقبہ کو ۷ کنکریاں، قربانی، حلق یا قصر اور طوافِ زیارت۔"],["۱۱ تا ۱۳ ذوالحجہ","","ہر دن تینوں جمرات کو کنکریاں ماریں۔ روانگی سے پہلے طوافِ وداع کریں۔"],["تلبیہ",ZB,uB+" حج کے تفصیلی مسائل کے لیے کسی مستند عالم یا معلم سے رہنمائی لیں۔"]]
+});
+GK.length=0;GK.push(["namaz","نماز"],["wudu","وضو"],["janaza","جنازہ"],["kalmay","چھ کلمے"],["dua","روزمرہ دعائیں"],["qaida","نورانی قاعدہ"],["roza","روزہ"],["umrah","عمرہ"],["hajj","حج"]);
+["الف","بے","تے","ثے","جیم","حے","خے","دال","ذال","رے","زے","سین","شین","صاد","ضاد","طوے","ظوے","عین","غین","فے","قاف","کاف","لام","میم","نون","واؤ","ہے","ہمزہ","یے"].forEach((n,i)=>{if(HJ[i])HJ[i][1]=n});
+
+/* App install (PWA) */
+let DP=null;
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();DP=e;$("#inst").classList.remove("hide")});
+$("#inst").onclick=async()=>{if(!DP)return;DP.prompt();await DP.userChoice;DP=null;$("#inst").classList.add("hide")};
+addEventListener("appinstalled",()=>$("#inst").classList.add("hide"));
+if("serviceWorker" in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+/* Theme */
+$("#th").onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark"};
+
+/* Init */
+const ls=G("sur");if(ls&&NM[+ls])$("#ss").value=ls;
+$("#hb").innerHTML=HB.map(b=>`<option value="${b[0]}">${b[1]}</option>`).join("");const hk=G("hbk");if(hk)$("#hb").value=hk;const lc=G("city");if(lc)$("#city").value=lc;{const a=G("fa2"),u=G("fu");if(a)$("#fa").value=a;if(u)$("#fu").value=u;fnt()}{const gk=GD[G("gk")]?G("gk"):"namaz";guide(gk)}home();cal();events();quran();prayer();tab.p=1;
+const t=G("tab");tab(TABS.some(x=>x[0]===t)?t:"home");
+</script>
+</body>
+</html>
