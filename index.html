@@ -247,6 +247,22 @@ body[data-sw="l"] section:not(.hide){animation:swL .4s cubic-bezier(.2,.8,.2,1)}
 body[data-sw="r"] section:not(.hide){animation:swR .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes swL{from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:none}}
 @keyframes swR{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:none}}
+
+/* Islam01.Ai premium chat */
+.aihero{background:linear-gradient(135deg,#073c39,#0b5d57 55%,#123a58);color:#fff;border:0}
+.aihero .mut{color:#d4e9e5}
+.aihead{display:flex;align-items:center;gap:12px}
+.aiorb{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:#ffffff20;font-size:28px;border:1px solid #ffffff45}
+#aichat{display:flex;flex-direction:column;gap:10px;max-height:52vh;overflow:auto;padding:4px 0 12px}
+.aimsg{max-width:92%;padding:12px 14px;border-radius:16px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}
+.aimsg.bot{align-self:flex-start;background:var(--card);border:1px solid var(--bd);border-bottom-left-radius:5px}
+.aimsg.user{align-self:flex-end;background:var(--pri);color:var(--on);border-bottom-right-radius:5px}
+.aiquick{display:flex;gap:8px;overflow-x:auto;padding:3px 0 10px}
+.aiquick button{white-space:nowrap;border-radius:999px}
+.aicompose{display:flex;gap:8px;align-items:flex-end;position:sticky;bottom:80px;background:var(--bg);padding:8px 0}
+#aiprompt{flex:1;min-height:48px;max-height:130px;resize:vertical}
+#aistatus{font-size:12px;color:var(--mut);padding:3px 0}
+
 </style>
 </head>
 <body>
@@ -358,6 +374,15 @@ body[data-sw="r"] section:not(.hide){animation:swR .4s cubic-bezier(.2,.8,.2,1)}
 <button data-m="copy"><svg class="i"><use href="#i-copy"/></svg>Copy karein</button>
 <button data-m="ref"><svg class="i"><use href="#i-hadith"/></svg>Hawala</button>
 <div id="srf" class="hide"></div></div></div><div id="ts" class="hide"></div>
+
+<section id="islamai" class="hide">
+<button class="bk" data-go="more">← Wapas</button>
+<div class="card aihero"><div class="aihead"><div class="aiorb">☪</div><div><div style="font-weight:800;font-size:21px">Islam01.Ai</div><div class="mut">Aap ka Islami ilm ka digital madadgar</div></div></div><p class="mut" style="margin-bottom:0">Quran, Hadith, Seerat, Ibadat, Aqeedah aur rozmarra deeni sawalat par Urdu aur English mein rehnumai.</p></div>
+<div class="aiquick"><button data-aiq="Namaz ka sahi tareeqa Quran o Hadith ki roshni mein samjhayen.">Namaz</button><button data-aiq="Wudu ka sunnat tareeqa batayein.">Wudu</button><button data-aiq="Sabr ke bare mein Quran ki ayat batayein.">Sabr</button><button data-aiq="Zakat kin logon par farz hoti hai?">Zakat</button></div>
+<div class="card" style="padding:12px"><div id="aichat" aria-live="polite"><div class="aimsg bot">السلام علیکم! میں Islam01.Ai ہوں۔ اپنا اسلامی سوال اردو یا English میں پوچھیں۔ میں حوالہ دینے کی کوشش کروں گا، اور جہاں اختلاف یا غیر یقینی ہو وہاں واضح بتاؤں گا۔</div></div><div id="aistatus">AI service endpoint: /api/islam01-ai</div><div class="aicompose"><textarea id="aiprompt" placeholder="Apna Islami sawal likhein..." rows="2"></textarea><button class="on" id="aisend">Send ➤</button></div><div class="row"><button id="aiclear">Chat clear karein</button></div></div>
+<details class="card"><summary><b>AI service setup (admin)</b></summary><p class="mut">Agar backend doosri hosting par hai to secure HTTPS endpoint yahan set karein. API key browser mein kabhi na rakhein.</p><input id="aiendpoint" class="full" type="url" placeholder="/api/islam01-ai"><button class="full" id="aisave">Endpoint save karein</button></details>
+</section>
+
 <script>
 let UL="ur";try{UL=localStorage.getItem("ul")||"ur"}catch(e){}
 const LOC=()=>UL==="ur"?"ur-PK":"en-GB";
@@ -401,7 +426,7 @@ const HAD=[
 ];
 
 /* Tabs */
-const GR=[["quran","Quran",["qlist","quran"]],["hadith","Hadith",["hbooks","hadith"]],["home","Home",["home","namaz","ytc"]],["kaaba","Ibadaat",["ib","guide"]],["more","More",["more","cal","events","qibla","tasbeeh"]],["profile","Profile",["profile"]]];
+const GR=[["quran","Quran",["qlist","quran"]],["hadith","Hadith",["hbooks","hadith"]],["home","Home",["home","namaz","ytc"]],["kaaba","Ibadaat",["ib","guide"]],["more","More",["more","cal","events","qibla","tasbeeh","islamai"]],["profile","Profile",["profile"]]];
 const TABS=GR.flatMap(g=>g[2]);
 $("#bn").innerHTML='<i id="bnp"></i>'+GR.filter(g=>g[0]!=="profile").map((g,i)=>`<button data-g="${i}"><span>${g[0]==="profile"?PAV:ic(g[0])}</span>${g[1]}</button>`).join("");
 const SGM={home:["home","namaz"],namaz:["home","namaz"],cal:["cal","events"],events:["cal","events"]},LB={home:"Home",namaz:"Namaz",cal:"Calendar",events:"Events"};
@@ -635,7 +660,7 @@ $("#gt").onclick=e=>{const b=e.target.closest("[data-k]");if(b)guide(b.dataset.k
 setTimeout(()=>{$("#sp").classList.add("out");setTimeout(()=>$("#sp").remove(),800)},2600);
 /* Islam360-style sections */
 const CD=(a,b)=>a.map(x=>`<button class="bc" data-go="${x[2]}"><span class="ic">${ic(x[0])}</span>${x[1]}</button>`).join("");
-$("#ibl").innerHTML=CD([["mosque","Namaz","g:namaz"],["moon","Roza","g:roza"],["tent","Hajj","g:hajj"],["kaaba","Umrah","g:umrah"],["coffin","Janaza","g:janaza"],["drop","Wudu","g:wudu"]]);
+$("#ibl").innerHTML=CD([["mosque","Namaz","g:namaz"],["moon","Roza","g:roza"],["tent","Hajj","g:hajj"],["kaaba","Umrah","g:umrah"],["coffin","Janaza","g:janaza"],["drop","Wudu","g:wudu"],["star","Islam01.Ai","islamai"]]);
 $("#mol").innerHTML=CD([["alif","Noorani Qaida","g:qaida"],["compass","Qibla","qibla"],["beads","Tasbeeh","tasbeeh"],["calendar","Calendar","cal"],["star","Events","events"],["finger","6 Kalmay","g:kalmay"],["hands","Rozmarra Duain","g:dua"],["drop","Wudu","g:wudu"]]);
 const HBK=[["bukhari","صحيح البخاري","Sahih Bukhari","#c58f00"],["muslim","صحيح مسلم","Sahih Muslim","#3e8e63"],["tirmidhi","جامع الترمذي","Jami at-Tirmidhi","#b4523c"],["abudawud","سنن أبي داود","Sunan Abu Dawud","#2f7fd0"],["nasai","سنن النسائي","Sunan an-Nasai","#1ea77d"],["ibnmajah","سنن ابن ماجه","Sunan Ibn Majah","#7a55d0"]];
 $("#hbl").innerHTML=HBK.map(h=>`<button class="bc" data-go="b:${h[0]}"><span class="ar" style="color:${h[3]}">${h[1]}</span>${h[2]}</button>`).join("");
@@ -1103,5 +1128,34 @@ $("#th").onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.da
 const ls=G("sur");if(ls&&NM[+ls])$("#ss").value=ls;
 $("#hb").innerHTML=HB.map(b=>`<option value="${b[0]}">${b[1]}</option>`).join("");const hk=G("hbk");if(hk)$("#hb").value=hk;const lc=G("city");if(lc)$("#city").value=lc;{const a=G("fa2"),u=G("fu");if(a)$("#fa").value=a;if(u)$("#fu").value=u;fnt()}{const gk=GD[G("gk")]?G("gk"):"namaz";guide(gk)}home();cal();events();quran();prayer();tab.p=1;
 const t=G("tab");tab(TABS.some(x=>x[0]===t)?t:"home");
+
+/* Islam01.Ai secure backend chat */
+let AIH=[];
+function aiBubble(role,txt){const d=document.createElement("div");d.className="aimsg "+role;d.textContent=txt;$("#aichat").appendChild(d);$("#aichat").scrollTop=$("#aichat").scrollHeight;return d}
+function aiInit(){
+ const ep=G("islam01_ai_endpoint")||"/api/islam01-ai";$("#aiendpoint").value=ep;$("#aistatus").textContent="AI service endpoint: "+ep;
+ $("#aisave").onclick=()=>{const v=$("#aiendpoint").value.trim()||"/api/islam01-ai";S("islam01_ai_endpoint",v);$("#aistatus").textContent="Endpoint saved: "+v};
+ $("#aiclear").onclick=()=>{AIH=[];$("#aichat").innerHTML="";aiBubble("bot","السلام علیکم! میں Islam01.Ai ہوں۔ اپنا اسلامی سوال اردو یا English میں پوچھیں۔")};
+ document.querySelectorAll("[data-aiq]").forEach(b=>b.onclick=()=>{ $("#aiprompt").value=b.dataset.aiq; aiSend() });
+ $("#aisend").onclick=aiSend;
+ $("#aiprompt").onkeydown=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();aiSend()}};
+}
+async function aiSend(){
+ const q=$("#aiprompt").value.trim();if(!q)return;
+ $("#aiprompt").value="";aiBubble("user",q);const wait=aiBubble("bot","Jawab tayar ho raha hai…");$("#aisend").disabled=true;
+ const ep=G("islam01_ai_endpoint")||"/api/islam01-ai";
+ try{
+  const r=await fetch(ep,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,history:AIH,language:UL||"ur",assistant:"Islam01.Ai",instructions:"You are Islam01.Ai, a careful Islamic knowledge assistant. Answer in the user's language. Prioritize Quran and authentic Hadith references. Never fabricate citations. Explain scholarly differences fairly and refer sensitive fatwa cases to a qualified scholar."})});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(data.error||("HTTP "+r.status));
+  const answer=data.answer||data.reply||data.output||data.choices?.[0]?.message?.content;
+  if(!answer)throw new Error("AI server se jawab nahin mila.");
+  wait.textContent=answer;AIH.push({role:"user",content:q},{role:"assistant",content:answer});AIH=AIH.slice(-12);
+  $("#aistatus").textContent="Connected · Islam01.Ai";
+ }catch(e){wait.textContent="AI service abhi connect nahin ho saki. "+(e.message||"Network error")+". Hosting par backend aur OPENAI_API_KEY configure karein.";$("#aistatus").textContent="Connection error";}
+ finally{$("#aisend").disabled=false}
+}
+aiInit();
+
 </script></body>
 </html>
