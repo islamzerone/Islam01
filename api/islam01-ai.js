@@ -33,7 +33,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || 'gpt-6-luna',
+        model: process.env.OPENAI_MODEL || 'gpt-4.1-mini',
         messages,
         max_completion_tokens: 1200
       })
