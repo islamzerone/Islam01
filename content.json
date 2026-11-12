@@ -1,13 +1,58 @@
 {
- "updated": "",
- "announce": {"on": false, "ur": "", "en": "", "link": ""},
- "prayerOff": {},
+ "updated": "2026-11-12T14:44:05.418Z",
+ "announce": {
+  "on": true,
+  "ur": "دعا مانگتے ہوئے کبھی مایوس نہ ہوں، اللہ سنتا ہے۔",
+  "en": "",
+  "link": ""
+ },
+ "prayerOff": {
+  "Fajr": 0,
+  "Sunrise": 0,
+  "Dhuhr": 0,
+  "Asr": 0,
+  "Maghrib": 0,
+  "Isha": 0
+ },
  "skin": "",
  "books": [],
  "pages": [],
  "duas": [],
  "duaCats": [],
  "daily": [],
- "tiles": [],
+ "tiles": [
+  {
+   "id": "g:namaz",
+   "hide": false
+  },
+  {
+   "id": "g:wudu",
+   "hide": false
+  },
+  {
+   "id": "g:janaza",
+   "hide": false
+  },
+  {
+   "id": "g:kalmay",
+   "hide": false
+  },
+  {
+   "id": "g:dua",
+   "hide": false
+  },
+  {
+   "id": "g:qaida",
+   "hide": false
+  },
+  {
+   "id": "t:hbooks",
+   "hide": false
+  },
+  {
+   "id": "t:qlist",
+   "hide": false
+  }
+ ],
  "profile": {}
 }
