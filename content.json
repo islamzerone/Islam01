@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-12T14:44:05.418Z",
+ "updated": "2026-11-12T14:46:35.320Z",
  "announce": {
-  "on": true,
-  "ur": "دعا مانگتے ہوئے کبھی مایوس نہ ہوں، اللہ سنتا ہے۔",
+  "on": false,
+  "ur": "",
   "en": "",
   "link": ""
  },
@@ -18,31 +18,17 @@
  "books": [],
  "pages": [],
  "duas": [],
- "duaCats": [],
+ "duaCats": [
+  {
+   "ur": "",
+   "en": "",
+   "icon": "hands"
+  }
+ ],
  "daily": [],
  "tiles": [
   {
-   "id": "g:namaz",
-   "hide": false
-  },
-  {
-   "id": "g:wudu",
-   "hide": false
-  },
-  {
-   "id": "g:janaza",
-   "hide": false
-  },
-  {
-   "id": "g:kalmay",
-   "hide": false
-  },
-  {
-   "id": "g:dua",
-   "hide": false
-  },
-  {
-   "id": "g:qaida",
+   "id": "t:qlist",
    "hide": false
   },
   {
@@ -50,8 +36,28 @@
    "hide": false
   },
   {
-   "id": "t:qlist",
-   "hide": false
+   "id": "g:wudu",
+   "hide": true
+  },
+  {
+   "id": "g:namaz",
+   "hide": true
+  },
+  {
+   "id": "g:janaza",
+   "hide": true
+  },
+  {
+   "id": "g:kalmay",
+   "hide": true
+  },
+  {
+   "id": "g:dua",
+   "hide": true
+  },
+  {
+   "id": "g:qaida",
+   "hide": true
   }
  ],
  "profile": {}
